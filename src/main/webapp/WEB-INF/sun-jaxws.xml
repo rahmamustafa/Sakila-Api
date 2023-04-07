@@ -1,0 +1,22 @@
+
+
+
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+    <endpoint
+        name="ActorWebService"
+        implementation="gov.iti.sakila.services.ActorService"
+        url-pattern="/ws/calc" />
+        <endpoint
+        name="CategoryWebService"
+        implementation="gov.iti.sakila.services.CategoryService"
+        url-pattern="/ws/account-services" />
+        <endpoint
+        name="CustomerWebService"
+        implementation="gov.iti.sakila.services.CustomerService"
+        url-pattern="/ws/payment-services" />
+        <endpoint
+        name="FilmWebService"
+        implementation="gov.iti.sakila.services.FilmService"
+        url-pattern="/ws/payment-services" />
+
+</endpoints>
