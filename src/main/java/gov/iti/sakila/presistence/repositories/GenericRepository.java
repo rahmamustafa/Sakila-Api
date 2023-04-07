@@ -12,7 +12,7 @@ public class GenericRepository<T, Id> {
     protected Class<T> entityClass;
     protected EntityManager entityManager;
 
-    protected GenericRepository(Class<T> entityClass) {
+    public GenericRepository(Class<T> entityClass) {
         this.entityManager = JpaManagerSingleton
                 .INSTANCE.getEntityManager();
         this.entityClass = entityClass;
@@ -32,8 +32,7 @@ public class GenericRepository<T, Id> {
         entityManager.refresh(obj);
         return obj;
     }
-    public T update(Id id){
-        T obj = findById(id);
+    public T update(T obj){ // need to check if Category exists ?
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         entityManager.merge(obj);

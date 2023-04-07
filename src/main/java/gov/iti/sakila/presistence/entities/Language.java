@@ -59,8 +59,7 @@ public class Language implements Serializable {
         this.languageId = languageId;
     }
 
-    public Language(Short languageId, String name, Date lastUpdate) {
-        this.languageId = languageId;
+    public Language(String name, Date lastUpdate) {
         this.name = name;
         this.lastUpdate = lastUpdate;
     }

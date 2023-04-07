@@ -28,27 +28,33 @@ public class FilmService {
     public Film deleteById(Short filmId){
         return filmRepository.deleteById(filmId);
     }
-    public Film update(Short filmId){
-        return filmRepository.update(filmId);
+    public Film update(Film film){
+        if(findById(film.getFilmId()) == null)
+            return null;
+        return filmRepository.update(film);
     }
     public List<Film> findAll(){
         return Collections.unmodifiableList(filmRepository.findAll());
     }
 
-    public List<Actor> findFilmActors(Film film){
+    public List<Actor> findFilmActors(Short filmId){
+        Film film = findById(filmId);
         return film.getFilmActorList().stream().map(FilmActor::getActor).toList();
     }
-    public Language findFilmLanguage(Film film){
+    public Language findFilmLanguage(Short filmId){
+        Film film = findById(filmId);
         return film.getLanguageId();
     }
-    public Language findFilmOriginalLanguage(Film film){
+    public Language findFilmOriginalLanguage(Short filmId){
+        Film film = findById(filmId);
         return film.getOriginalLanguageId();
     }
     public List<Film> findByReleaseYear(Date releaseYear){
         return filmRepository.findByReleaseYear(releaseYear);
 
     }
-    public List<Category> findFilmCategories(Film film){
+    public List<Category> findFilmCategories(Short filmId){
+        Film film = findById(filmId);
         return film.getFilmCategoryList().stream().map(FilmCategory::getCategory).toList();
     }
     public List<Film> findByRating(String rating){
@@ -66,15 +72,18 @@ public class FilmService {
 
     }
     // return customers bought film
-    public List<Customer> findFilmCustomers(Film film){
+    public List<Customer> findFilmCustomers(Short filmId){
+        Film film = findById(filmId);
         return film.getInventoryList().stream().flatMap(inv -> inv.getStoreId().getCustomerList().stream()).toList();     
     }
     // return stores
-    public List<Store> findFilmStores(Film film){
+    public List<Store> findFilmStores(Short filmId){
+        Film film = findById(filmId);
         return film.getInventoryList().stream().map(inv -> inv.getStoreId()).toList();     
     }
     // return inventory
-    public List<Inventory> findFilmInventories(Film film){
+    public List<Inventory> findFilmInventories(Short filmId){
+        Film film = findById(filmId);
         return film.getInventoryList();
     }
 

@@ -101,8 +101,7 @@ public class Film implements Serializable {
         this.filmId = filmId;
     }
 
-    public Film(Short filmId, String title, short rentalDuration, BigDecimal rentalRate, BigDecimal replacementCost, Date lastUpdate) {
-        this.filmId = filmId;
+    public Film(String title, short rentalDuration, BigDecimal rentalRate, BigDecimal replacementCost, Date lastUpdate) {
         this.title = title;
         this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;

@@ -6,17 +6,15 @@ import jakarta.persistence.Persistence;
 public enum JpaManagerSingleton {
     
     INSTANCE;
-    
     private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
+
 
     public EntityManager getEntityManager(){
-        return entityManager;
+        return entityManagerFactory.createEntityManager();
     }
 
-    JpaManagerSingleton(){
+    private JpaManagerSingleton(){
         entityManagerFactory = Persistence.createEntityManagerFactory("sakilaPresis");
-        entityManager = entityManagerFactory.createEntityManager();
     }
 
 }
