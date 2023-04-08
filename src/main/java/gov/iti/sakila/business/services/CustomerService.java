@@ -1,12 +1,12 @@
-package gov.iti.sakila.services;
+package gov.iti.sakila.business.services;
 
 import java.util.Collections;
 import java.util.List;
 
 import gov.iti.sakila.presistence.entities.Customer;
-import gov.iti.sakila.presistence.entities.Film;
 import gov.iti.sakila.presistence.repositories.CustomerRepository;
-
+import jakarta.jws.WebService;
+@WebService
 public class CustomerService {
     private CustomerRepository customerRepository = new CustomerRepository();
 
@@ -16,7 +16,7 @@ public class CustomerService {
     public Customer findById(Short customerId){
         return customerRepository.findById(customerId);
     }
-    public Customer deleteById(Short customerId){
+    public boolean deleteById(Short customerId){
         return customerRepository.deleteById(customerId);
     }
     public Customer update(Customer customer){

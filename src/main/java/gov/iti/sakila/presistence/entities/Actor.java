@@ -134,7 +134,11 @@ public class Actor implements Serializable {
 
     @Override
     public String toString() {
-        return "gov.iti.sakila.entities.Actor[ actorId=" + actorId + " ]";
+        return "Actor{" +
+                "actorId=" + actorId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                '}';
     }
-    
 }

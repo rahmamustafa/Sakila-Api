@@ -1,13 +1,13 @@
-package gov.iti.sakila.services;
+package gov.iti.sakila.business.services;
 
 import java.util.Collections;
 import java.util.List;
 
-import gov.iti.sakila.presistence.entities.Actor;
 import gov.iti.sakila.presistence.entities.Category;
 import gov.iti.sakila.presistence.entities.Film;
 import gov.iti.sakila.presistence.repositories.CategoryRepository;
-
+import jakarta.jws.WebService;
+@WebService
 public class CategoryService {
     private CategoryRepository categoryRepository = new CategoryRepository();
 
@@ -17,7 +17,7 @@ public class CategoryService {
     public Category findById(Short categoryId){
         return categoryRepository.findById(categoryId);
     }
-    public Category deleteById(Short categoryId){
+    public boolean deleteById(Short categoryId){
         return categoryRepository.deleteById(categoryId);
     }
     public Category update(Category category){

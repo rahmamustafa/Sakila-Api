@@ -1,5 +1,7 @@
 package gov.iti.sakila.presistence.repositories;
 
+import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 
 import gov.iti.sakila.presistence.entities.Actor;
@@ -8,6 +10,7 @@ import gov.iti.sakila.presistence.entities.FilmActor;
 
 public class ActorRepository extends GenericRepository<Actor, Short> {
 
+    FilmActorRepository filmActorRepository = new FilmActorRepository();
     public ActorRepository(){
         super(Actor.class);
     }
@@ -19,6 +22,12 @@ public class ActorRepository extends GenericRepository<Actor, Short> {
         Actor actor = findById(actorId);
         return actor.getFilmActorList().stream().map(FilmActor::getFilm).toList();
     }
-    
+    public List<Film> addFilmToActor(Short actorId , Short filmId){
+        FilmActor filmActor  = new FilmActor(actorId, filmId);
+        filmActor.setLastUpdate(Date.from(Instant.now()));
+        filmActorRepository.create(filmActor);
+//      entityManager.refresh(filmActor);
+        return findActorFilms(actorId);
+    }
 
 }
