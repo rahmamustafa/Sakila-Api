@@ -21,23 +21,22 @@ public class FilmDto implements Serializable {
     private Short filmId;
     private String title;
     private String description;
-    private LocalDate releaseYear;
+//    private int releaseYear;
     private short rentalDuration;
     private BigDecimal rentalRate;
     private Short length;
     private BigDecimal replacementCost;
     private String rating;
     private String specialFeatures;
-    private LocalDate lastUpdate;
+    private Date lastUpdate;
     private String language;
     private String originalLanguage;
 
-    public FilmDto(String title, String description, LocalDate releaseYear,
+    public FilmDto(String title, String description,
                    short rentalDuration, BigDecimal rentalRate, Short length, BigDecimal replacementCost,
-                   String rating, String specialFeatures, LocalDate lastUpdate, String language) {
+                   String rating, String specialFeatures, Date lastUpdate, String language) {
         this.title = title;
         this.description = description;
-        this.releaseYear = releaseYear;
         this.rentalDuration = rentalDuration;
         this.rentalRate = rentalRate;
         this.length = length;

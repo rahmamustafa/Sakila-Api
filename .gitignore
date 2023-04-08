@@ -8,6 +8,11 @@
 /dataSources/
 /dataSources.local.xml
 
+/SoapRequests/
+
 *.log
 *.idea
+target/
 */target/*
+*/target/**
+.classpath

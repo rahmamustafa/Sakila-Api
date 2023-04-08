@@ -8,11 +8,15 @@ import java.util.List;
 
 import gov.iti.sakila.business.mappers.ActorMapper;
 import gov.iti.sakila.business.mappers.FilmMapper;
+import gov.iti.sakila.business.mappers.StaffMapper;
+import gov.iti.sakila.business.mappers.StoreMapper;
+import gov.iti.sakila.presistence.dtos.StoreDto;
 import gov.iti.sakila.presistence.dtos.actor.ActorDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDtoCreate;
 import gov.iti.sakila.presistence.entities.*;
 import gov.iti.sakila.presistence.repositories.FilmRepository;
+import gov.iti.sakila.presistence.repositories.LanguageRepository;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
 
@@ -20,11 +24,15 @@ import jakarta.jws.WebService;
 public class FilmService {
 
     private final FilmRepository filmRepository = new FilmRepository();
+    private final LanguageRepository languageRepository = new LanguageRepository();
 
     public FilmDto createFilm(@WebParam(name = "film") FilmDtoCreate filmDtoCreate){
         Film film = FilmMapper.INSTANCE.filmDtoCreateToFilm(filmDtoCreate);
-        film.setLastUpdate(java.sql.Date.from(Instant.now()));
-        film.setLanguageId();
+        film.setLastUpdate(Date.from(Instant.now()));
+        film.setLanguageId(languageRepository.findById(filmDtoCreate.getLanguageId()));
+        if(filmDtoCreate.getOriginalLanguageId()!=null)
+            film.setOriginalLanguageId(languageRepository.findById(filmDtoCreate.getOriginalLanguageId()));
+
         film = filmRepository.create(film);
         return FilmMapper.INSTANCE.filmToFilmDto(film);
     }
@@ -56,23 +64,22 @@ public class FilmService {
     public String findFilmOriginalLanguage(@WebParam(name = "filmId")Short filmId){
         return findFilmById(filmId).getOriginalLanguage();
     }
-    public List<FilmDto> findByReleaseYear(@WebParam(name = "filmId")Date releaseYear){
+    public List<FilmDto> findFilmByReleaseYear(@WebParam(name = "filmId")Date releaseYear){
         List<Film> films = filmRepository.findByReleaseYear(releaseYear);
         return films.stream().map(FilmMapper.INSTANCE::filmToFilmDto).toList();
-
     }
-    public List<String> findFilmCategories(Short filmId){
+    public List<String> findFilmCategories(@WebParam(name = "filmId")Short filmId){
         Film film = filmRepository.findById(filmId);
         List<Category> categories = film.getFilmCategoryList().stream().map(FilmCategory::getCategory).toList();
         return categories.stream().map(Category::getName).toList();
     }
-    public List<FilmDto> findByRating(String rating){
+    public List<FilmDto> findByRating(@WebParam(name = "rating")String rating){
         List<Film> films = filmRepository.findByRating(rating);
         return films.stream().map(FilmMapper.INSTANCE::filmToFilmDto).toList();
 
     }
 
-    public List<FilmDto> findByRentalDuration(String rentalDuration){
+    public List<FilmDto> findByRentalDuration(@WebParam(name = "filmId")String rentalDuration){
         List<Film> films = filmRepository.findByRentalDuration(rentalDuration);
         return films.stream().map(FilmMapper.INSTANCE::filmToFilmDto).toList();
 
@@ -93,10 +100,12 @@ public class FilmService {
 //        return film.getInventoryList().stream().flatMap(inv -> inv.getStoreId().getCustomerList().stream()).toList();
 //    }
 //    // return stores
-//    public List<Store> findFilmStores(Short filmId){
-//        Film film = findById(filmId);
-//        return film.getInventoryList().stream().map(inv -> inv.getStoreId()).toList();
-//    }
+    public List<StoreDto> findFilmStores(Short filmId){
+        Film film = filmRepository.findById(filmId);
+        List<Store> stores = film.getInventoryList().stream().map(inv -> inv.getStoreId()).toList();
+        return stores.stream().map(StoreMapper.INSTANCE::toDto).toList();
+
+    }
 //    // return inventory
 //    public List<Inventory> findFilmInventories(Short filmId){
 //        Film film = findById(filmId);
