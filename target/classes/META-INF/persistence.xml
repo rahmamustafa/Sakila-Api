@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="sakilaPresis" transaction-type="RESOURCE_LOCAL">
+    <!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+    <!-- <class>gov.iti.sakila2.Category</class>
+    <class>gov.iti.sakila2.Language</class>
+    <class>gov.iti.sakila2.FilmCategory</class>
+    <class>gov.iti.sakila2.Rental</class>
+    <class>gov.iti.sakila2.Payment</class>
+    <class>gov.iti.sakila2.SalesByStore</class>
+    <class>gov.iti.sakila2.Film</class>
+    <class>gov.iti.sakila2.Customer</class>
+    <class>gov.iti.sakila2.FilmList</class>
+    <class>gov.iti.sakila2.StaffList</class>
+    <class>gov.iti.sakila2.ActorInfo</class>
+    <class>gov.iti.sakila2.FilmText</class>
+    <class>gov.iti.sakila2.Address</class>
+    <class>gov.iti.sakila2.FilmActor</class>
+    <class>gov.iti.sakila2.Store</class>
+    <class>gov.iti.sakila2.Country</class>
+    <class>gov.iti.sakila2.City</class>
+    <class>gov.iti.sakila2.CustomerList</class>
+    <class>gov.iti.sakila2.Staff</class>
+    <class>gov.iti.sakila2.Actor</class>
+    <class>gov.iti.sakila2.NicerButSlowerFilmList</class>
+    <class>gov.iti.sakila2.Inventory</class>
+    <class>gov.iti.sakila2.SalesByFilmCategory</class>
+    <class>gov.iti.sakila.entities.FilmCategory</class>
+    <class>gov.iti.sakila.entities.City</class>
+    <class>gov.iti.sakila.entities.Inventory</class>
+    <class>gov.iti.sakila.entities.Staff</class>
+    <class>gov.iti.sakila.entities.FilmActor</class>
+    <class>gov.iti.sakila.entities.FilmText</class>
+    <class>gov.iti.sakila.entities.Film</class>
+    <class>gov.iti.sakila.entities.Customer</class>
+    <class>gov.iti.sakila.entities.Actor</class>
+    <class>gov.iti.sakila.entities.Category</class>
+    <class>gov.iti.sakila.entities.Rental</class>
+    <class>gov.iti.sakila.entities.Payment</class>
+    <class>gov.iti.sakila.entities.Country</class>
+    <class>gov.iti.sakila.entities.Language</class>
+    <class>gov.iti.sakila.entities.Store</class>
+    <class>gov.iti.sakila.entities.Address</class>
+    <class>gov.iti.sakila.entities.views.FilmList</class>
+    <class>gov.iti.sakila.entities.views.ActorInfo</class>
+    <class>gov.iti.sakila.entities.views.NicerButSlowerFilmList</class>
+    <class>gov.iti.sakila.entities.views.CustomerList</class>
+    <class>gov.iti.sakila.entities.views.SalesByStore</class>
+    <class>gov.iti.sakila.entities.views.StaffList</class>
+    <class>gov.iti.sakila.entities.views.SalesByFilmCategory</class> -->
+    <!-- <exclude-unlisted-classes>false</exclude-unlisted-classes> -->
+    <properties>
+        <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+        <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/sakila"/>
+        <property name="jakarta.persistence.jdbc.user" value="root"/>
+        <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jakarta.persistence.jdbc.password" value="root"/>
+        <!-- <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/> -->
+        <property name="hibernate.show_sql" value="true" />
+        <property name="hibernate.format_sql" value="true" />
+    </properties>
+  </persistence-unit>
+</persistence>

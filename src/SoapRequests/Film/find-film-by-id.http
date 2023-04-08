@@ -1,0 +1,13 @@
+POST http://localhost:8888/sakila/api/ws/films HTTP/1.1
+Content-Type: text/xml
+
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:jets="http://services.business.sakila.iti.gov/">
+
+    <soap:Body>
+        <jets:findById>
+        <arg0>2</arg0>
+    </jets:findById>
+    </soap:Body>
+</soap:Envelope>
