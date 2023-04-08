@@ -2,6 +2,7 @@ package gov.iti.sakila.presistence.dtos.actor;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -17,7 +18,9 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
 public class ActorDtoCreate implements Serializable {
+    @XmlElement(required=true,nillable=false)
     private String firstName;
+    @XmlElement(required=true,nillable=false)
     private String lastName;
     public ActorDtoCreate(String firstName, String lastName) {
         this.firstName = firstName;
