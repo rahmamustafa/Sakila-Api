@@ -5,10 +5,14 @@ import gov.iti.sakila.business.services.ActorService;
 import gov.iti.sakila.business.services.FilmService;
 import gov.iti.sakila.presistence.dtos.actor.ActorDtoCreate;
 import gov.iti.sakila.presistence.dtos.film.FilmDto;
+import gov.iti.sakila.presistence.dtos.film.FilmDtoCreate;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.Year;
 import java.util.Date;
 
 public class Main {
@@ -28,10 +32,11 @@ public class Main {
 
         //System.out.println( actorService.deleteById(Short.valueOf("201")));
 //        System.out.println( actorService.findActorFilms(Short.valueOf("2")));
-        FilmDto filmDto = new FilmDto( "title", "description", LocalDate.now(),
-        Short.valueOf("15") , BigDecimal.valueOf(15) , Short.valueOf("5") , BigDecimal.valueOf(5),
-                 "rating",  "specialFeatures", LocalDate.now(), "language");
-//        System.out.println( actorService.addFilmToActor(Short.valueOf("202"),Short.valueOf("2")));
-        System.out.println(filmService.createFilm(filmDto));
+        //FilmDtoCreate filmDtoCreate = new FilmDtoCreate( "title", "description",
+
+//        Short.valueOf("15") , BigDecimal.valueOf(15) , Short.valueOf("5") , BigDecimal.valueOf(5),
+//                 "G",  "Trailers",Short.valueOf("1") );
+////        System.out.println( actorService.addFilmToActor(Short.valueOf("202"),Short.valueOf("2")));
+//        System.out.println(filmService.createFilm(filmDtoCreate));
     }
 }
