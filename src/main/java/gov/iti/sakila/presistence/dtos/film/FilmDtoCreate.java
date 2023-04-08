@@ -46,6 +46,6 @@ public class FilmDtoCreate implements Serializable {
         this.rating = rating;
         this.specialFeatures = specialFeatures;
         this.lastUpdate = lastUpdate;
-        this.language = language;
+        this.languageId = language;
     }
 }
