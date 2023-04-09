@@ -1,22 +1,23 @@
-
-
-
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
     <endpoint
-        name="ActorWebService"
-        implementation="gov.iti.sakila.business.services.ActorService"
-        url-pattern="/ws/actors" />
-        <endpoint
-        name="CategoryWebService"
-        implementation="gov.iti.sakila.business.services.CategoryService"
-        url-pattern="/ws/categories" />
-        <endpoint
-        name="CustomerWebService"
-        implementation="gov.iti.sakila.business.services.CustomerService"
-        url-pattern="/ws/customers" />
-        <endpoint
-        name="FilmWebService"
-        implementation="gov.iti.sakila.business.services.FilmService"
-        url-pattern="/ws/films" />
+            name="ActorWebService"
+            implementation="gov.iti.sakila.business.services.ActorService"
+            url-pattern="/ws/actors"/>
+    <endpoint
+            name="CategoryWebService"
+            implementation="gov.iti.sakila.business.services.CategoryService"
+            url-pattern="/ws/categories"/>
+    <endpoint
+            name="CustomerWebService"
+            implementation="gov.iti.sakila.business.services.CustomerService"
+            url-pattern="/ws/customers"/>
+    <endpoint
+            name="FilmWebService"
+            implementation="gov.iti.sakila.business.services.FilmService"
+            url-pattern="/ws/films"/>
+    <endpoint
+            name="StoreWebService"
+            implementation="gov.iti.sakila.business.services.StoreService"
+            url-pattern="/ws/stores"/>
 
 </endpoints>

@@ -1,5 +1,7 @@
-package gov.iti.sakila.presistence.dtos;
+package gov.iti.sakila.presistence.dtos.store;
 
+import gov.iti.sakila.presistence.dtos.AddressDto;
+import gov.iti.sakila.presistence.dtos.film.FilmDtoWithCountForStore;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import lombok.Data;
@@ -7,7 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 /**
  * A DTO for the {@link gov.iti.sakila.presistence.entities.Store} entity
@@ -16,9 +18,9 @@ import java.util.Date;
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
-public class StoreDto implements Serializable {
+public class StoreFilmsDto implements Serializable {
     private Short storeId;
-    private Date lastUpdate;
-    private AddressDto addressDto;
-    private StaffDto managerStaffDto;
+    private AddressDto address;
+
+    private List<FilmDtoWithCountForStore> filmList;
 }

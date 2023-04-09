@@ -16,7 +16,6 @@ public class ActorRepository extends GenericRepository<Actor, Short> {
     }
     public List<Actor> findByFirstName(String firstName){
         return findListObjByNamedQuery("Actor.findByFirstName", "firstName", firstName);
-
     }
     public List<Film> findActorFilms(Short actorId){
         Actor actor = findById(actorId);
