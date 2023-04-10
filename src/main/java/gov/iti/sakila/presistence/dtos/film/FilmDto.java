@@ -31,19 +31,38 @@ public class FilmDto implements Serializable {
     private Date lastUpdate;
     private String language;
     private String originalLanguage;
+    private int actorsNumber;
 
-    public FilmDto(String title, String description,
-                   short rentalDuration, BigDecimal rentalRate, Short length, BigDecimal replacementCost,
-                   String rating, String specialFeatures, Date lastUpdate, String language) {
-        this.title = title;
-        this.description = description;
-        this.rentalDuration = rentalDuration;
-        this.rentalRate = rentalRate;
-        this.length = length;
-        this.replacementCost = replacementCost;
-        this.rating = rating;
-        this.specialFeatures = specialFeatures;
-        this.lastUpdate = lastUpdate;
-        this.language = language;
+
+    public FilmDto(FilmDto film) {
+        this.filmId = film.filmId;
+        this.title = film.title;
+        this.description = film.description;
+        this.rentalDuration = film.rentalDuration;
+        this.rentalRate = film.rentalRate;
+        this.length = film.length;
+        this.replacementCost = film.replacementCost;
+        this.rating = film.rating;
+        this.specialFeatures = film.specialFeatures;
+        this.lastUpdate = film.lastUpdate;
+        this.language = film.language;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmDto{" +
+                "filmId=" + filmId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", rentalDuration=" + rentalDuration +
+                ", rentalRate=" + rentalRate +
+                ", length=" + length +
+                ", replacementCost=" + replacementCost +
+                ", rating='" + rating + '\'' +
+                ", specialFeatures='" + specialFeatures + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", language='" + language + '\'' +
+                ", originalLanguage='" + originalLanguage + '\'' +
+                '}';
     }
 }

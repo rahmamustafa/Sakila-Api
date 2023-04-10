@@ -22,9 +22,9 @@ import java.util.Date;
 public class StoreDto implements Serializable {
     private Short storeId;
     private Date lastUpdate;
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true,name = "address")
     private AddressDto addressDto;
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true,name ="managerStaff" )
     private StaffDto managerStaffDto;
     private int numberOfFilms;
 

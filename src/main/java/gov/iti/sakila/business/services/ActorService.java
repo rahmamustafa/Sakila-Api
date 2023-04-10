@@ -49,9 +49,9 @@ public class ActorService {
         return films.stream().map(FilmMapper.INSTANCE::filmToFilmDto).toList();
     }
 
-    public List<FilmDto> addFilmToActor(@WebParam(name = "actorId")Short actorId ,@WebParam(name = "filmId") Short filmId){
-        List<Film> films = actorRepository.addFilmToActor(actorId,filmId);
-        return films.stream().map(FilmMapper.INSTANCE::filmToFilmDto).toList();
+    public int addFilmToActor(@WebParam(name = "actorId")Short actorId ,@WebParam(name = "filmId") Short filmId){
+        return actorRepository.addFilmToActor(actorId,filmId);
+
 
     }
 }

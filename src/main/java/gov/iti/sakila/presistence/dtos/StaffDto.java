@@ -18,7 +18,7 @@ import java.io.Serializable;
 public class StaffDto implements Serializable {
     private String firstName;
     private String lastName;
-    private byte[] picture;
+//    private byte[] picture;
     private String email;
     private boolean active;
 }

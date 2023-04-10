@@ -6,14 +6,18 @@ import java.util.Date;
 import java.util.List;
 
 import gov.iti.sakila.business.mappers.ActorMapper;
+import gov.iti.sakila.business.mappers.CustomerMapper;
 import gov.iti.sakila.business.mappers.FilmMapper;
 import gov.iti.sakila.business.mappers.StoreMapper;
+import gov.iti.sakila.presistence.dtos.customer.CustomerDto;
+import gov.iti.sakila.presistence.dtos.film.FilmDtoWithCountForStore;
 import gov.iti.sakila.presistence.dtos.store.StoreDto;
 import gov.iti.sakila.presistence.dtos.actor.ActorDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDtoCreate;
 import gov.iti.sakila.presistence.entities.*;
 import gov.iti.sakila.presistence.repositories.ActorRepository;
+import gov.iti.sakila.presistence.repositories.CategoryRepository;
 import gov.iti.sakila.presistence.repositories.FilmRepository;
 import gov.iti.sakila.presistence.repositories.LanguageRepository;
 import jakarta.jws.WebParam;
@@ -25,6 +29,7 @@ public class FilmService {
     private final FilmRepository filmRepository = new FilmRepository();
     private final LanguageRepository languageRepository = new LanguageRepository();
     private final ActorRepository actorRepository = new ActorRepository();
+    private final CategoryRepository categoryRepository = new CategoryRepository();
 
 
     public FilmDto createFilm(@WebParam(name = "film") FilmDtoCreate filmDtoCreate){
@@ -95,27 +100,35 @@ public class FilmService {
 
     }
     // return customers bought film
-//    public List<Customer> findFilmCustomers(Short filmId){
-//        Film film = findById(filmId);
-//        return film.getInventoryList().stream().flatMap(inv -> inv.getStoreId().getCustomerList().stream()).toList();
-//    }
+    public List<CustomerDto> findFilmCustomers(@WebParam(name = "id")Short filmId){
+        Film film = filmRepository.findById(filmId);
+        if(film==null)
+            return null;
+         List<Customer> customers = film.getInventoryList().stream().flatMap(inv -> inv.getStoreId().getCustomerList().stream()).toList();
+        return customers.stream().map(CustomerMapper.INSTANCE::customertoCustomerDto).toList();
+    }
 //    // return stores
     public List<StoreDto> findFilmStores(@WebParam(name = "id")Short filmId){
         Film film = filmRepository.findById(filmId);
+        if(film==null)
+            return null;
         List<Store> stores = film.getInventoryList().stream().map(inv -> inv.getStoreId()).toList();
         return stores.stream().map(StoreMapper.INSTANCE::storetoStoreDto).toList();
 
     }
 
-//    // return inventory
-//    public List<Inventory> findFilmInventories(Short filmId){
-//        Film film = findById(filmId);
-//        return film.getInventoryList();
-//    }
+    public int addActorToFilm(@WebParam(name = "filmId") Short filmId, @WebParam(name = "actorId")Short actorId ){
+        return filmRepository.addActorToFilm(filmId,actorId);
+    }
 
-    public List<ActorDto> addActorToFilm(@WebParam(name = "filmId") Short filmId, @WebParam(name = "actorId")Short actorId ){
-        List<Actor> filmActors = filmRepository.addActorToFilm(filmId,actorId);
-        return filmActors.stream().map(ActorMapper.INSTANCE::actorToActorDto).toList();
-
+    public int addCategoryToFilm(@WebParam(name = "filmId")Short filmId,@WebParam(name = "categoryId")Short categoryId){
+        return categoryRepository.addFilmToCategory(filmId,categoryId);
+    }
+    public List<FilmDto> findFilmByTitle(@WebParam(name = "title")String title){
+        List<Film> films = filmRepository.findByTitle(title).stream().toList();
+        return films.stream().map(FilmMapper.INSTANCE::filmToFilmDto).toList();
+    }
+    public FilmDtoWithCountForStore findNumberOfActor(Short filmId){
+        return filmRepository.findNumberOfActor(filmId);
     }
 }

@@ -20,8 +20,8 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
 public class StoreDtoCreate implements Serializable {
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true)
     private Short addressId;
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true)
     private Short managerStaffId;
 }

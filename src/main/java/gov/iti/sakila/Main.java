@@ -1,5 +1,6 @@
 package gov.iti.sakila;
 
+import gov.iti.sakila.business.services.StoreService;
 import gov.iti.sakila.presistence.dtos.actor.ActorDto;
 import gov.iti.sakila.business.services.ActorService;
 import gov.iti.sakila.business.services.FilmService;
@@ -19,6 +20,7 @@ public class Main {
     public static void main(String[] args) {
         FilmService filmService = new FilmService();
         ActorService actorService = new ActorService();
+        StoreService storeService = new StoreService();
        
 //        Film film = new Film("Rahma",Short.valueOf("6"),BigDecimal.valueOf(20.99),
 //                                BigDecimal.valueOf(20.99),Date.from(Instant.now()));
@@ -38,5 +40,7 @@ public class Main {
 //                 "G",  "Trailers",Short.valueOf("1") );
 ////        System.out.println( actorService.addFilmToActor(Short.valueOf("202"),Short.valueOf("2")));
 //        System.out.println(filmService.createFilm(filmDtoCreate));
+//        System.out.println(storeService.findNumberOfEachFilm((short) 1));
+        System.out.println(filmService.findNumberOfActor(Short.valueOf("1")));
     }
 }

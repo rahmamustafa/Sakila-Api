@@ -20,7 +20,15 @@ import java.util.List;
 @ToString
 public class StoreFilmsDto implements Serializable {
     private Short storeId;
-    private AddressDto address;
+    private String storeName;
+    //private AddressDto address;
 
     private List<FilmDtoWithCountForStore> filmList;
+
+    public StoreFilmsDto(Short storeId, String storeName,  List<FilmDtoWithCountForStore> filmList) {
+        this.storeId = storeId;
+        this.storeName = storeName;
+        //this.address = address;
+        this.filmList = filmList;
+    }
 }

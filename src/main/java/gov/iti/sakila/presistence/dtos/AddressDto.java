@@ -26,4 +26,5 @@ public class AddressDto implements Serializable {
     private byte[] location;
     private String phone;
     private Date lastUpdate;
+
 }

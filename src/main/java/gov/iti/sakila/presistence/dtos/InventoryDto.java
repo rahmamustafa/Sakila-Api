@@ -1,5 +1,6 @@
-package gov.iti.sakila.presistence.dtos.store;
+package gov.iti.sakila.presistence.dtos;
 
+import gov.iti.sakila.presistence.dtos.customer.CustomerDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -17,5 +18,6 @@ import java.io.Serializable;
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
 public class InventoryDto implements Serializable {
-    private FilmDto filmId;
+    private FilmDto film;
+    private CustomerDto customer;
 }

@@ -55,7 +55,7 @@ public class GenericRepository<T, Id> {
     }
 
     public T findById( Id id){
-        System.out.println(entityClass.getSimpleName());
+        //System.out.println(entityClass.getSimpleName());
         return (T) entityManager.find(entityClass, id);
     }
 

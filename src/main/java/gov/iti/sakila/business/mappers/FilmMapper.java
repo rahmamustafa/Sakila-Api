@@ -3,9 +3,7 @@ package gov.iti.sakila.business.mappers;
 import gov.iti.sakila.presistence.dtos.actor.ActorDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDtoCreate;
-import gov.iti.sakila.presistence.entities.Actor;
-import gov.iti.sakila.presistence.entities.Film;
-import gov.iti.sakila.presistence.entities.Language;
+import gov.iti.sakila.presistence.entities.*;
 import lombok.Data;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -15,13 +13,14 @@ import org.mapstruct.factory.Mappers;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 @Mapper
 public interface FilmMapper {
 
     FilmMapper INSTANCE = Mappers.getMapper( FilmMapper.class );
     @Mapping(source = "languageId", target = "language", qualifiedByName = "mapLanguageName")
-//    @Mapping(source = "releaseYear", target = "releaseYear", qualifiedByName = "mapReleaseYear")
+    @Mapping(source = "filmActorList", target = "actorsNumber", qualifiedByName = "mapActorsNumber")
     @Mapping(source = "originalLanguageId", target = "originalLanguage", qualifiedByName = "mapOriginalLanguageName")
     FilmDto filmToFilmDto(Film film);
     @Mapping(source = "originalLanguageId" , target = "originalLanguageId", ignore = true)
@@ -38,6 +37,11 @@ public interface FilmMapper {
         if(language!=null)
             return language.getName();
         return null;
+    }
+
+    @Named("mapActorsNumber")
+    default int mapNumberOfFilms(List<FilmActor> filmActorList) {
+        return filmActorList.size();
     }
     @Named("mapReleaseYear")
     default Integer mapReleaseYear(Date releaseYear) {

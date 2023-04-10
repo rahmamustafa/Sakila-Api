@@ -1,14 +1,14 @@
 package gov.iti.sakila.business.services;
 
-import gov.iti.sakila.business.mappers.AddressMapper;
-import gov.iti.sakila.business.mappers.FilmMapper;
-import gov.iti.sakila.business.mappers.StaffMapper;
-import gov.iti.sakila.business.mappers.StoreMapper;
+import gov.iti.sakila.business.mappers.*;
 import gov.iti.sakila.presistence.dtos.AddressDto;
+import gov.iti.sakila.presistence.dtos.RentalDto;
 import gov.iti.sakila.presistence.dtos.StaffDto;
+import gov.iti.sakila.presistence.dtos.customer.CustomerDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDto;
 import gov.iti.sakila.presistence.dtos.store.StoreDto;
 import gov.iti.sakila.presistence.dtos.store.StoreDtoCreate;
+import gov.iti.sakila.presistence.dtos.store.StoreFilmsDto;
 import gov.iti.sakila.presistence.entities.*;
 import gov.iti.sakila.presistence.repositories.AddressRepository;
 import gov.iti.sakila.presistence.repositories.StaffRepository;
@@ -59,12 +59,20 @@ public class StoreService {
         List<Film> films = store.getInventoryList().stream().map(Inventory::getFilmId).toList();
         return films.stream().map(FilmMapper.INSTANCE::filmToFilmDto).toList();
     }
+    public List<RentalDto> findStoreRentals(@WebParam(name = "id")Short storeId){
+        Store store = storeRepository.findById(storeId);
+        if(store==null)
+            return null;
+        List<Rental> rentals = store.getInventoryList().stream().flatMap(i -> i.getRentalList().stream()).toList();
+        return rentals.stream().map(RentalMapper.INSTANCE::rentalToRentalDto).toList();
+    }
     public int findNumberStoreFilms(@WebParam(name = "id")Short storeId){
         return storeRepository.findNumberStoreFilms(storeId);
     }
-//    public Map<Short,Integer> findNumberOfEachFilm(@WebParam(name = "id")Short storeId){
+//    public StoreFilmsDto findNumberOfEachFilm(@WebParam(name = "id")Short storeId){
 //        return storeRepository.findNumberOfEachFilm(storeId);
 //    }
+
 
 
 }

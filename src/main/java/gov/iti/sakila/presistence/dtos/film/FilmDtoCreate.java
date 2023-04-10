@@ -25,19 +25,19 @@ import java.util.Date;
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
 public class FilmDtoCreate implements Serializable {
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true)
     private String title;
     private String description;
 //    private int releaseYear;
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true)
     private Short rentalDuration;
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true)
     private BigDecimal rentalRate;
     private Short length;
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true)
     private BigDecimal replacementCost;
     private String specialFeatures;
-    @XmlElement(required=true,nillable=false)
+    @XmlElement(required=true)
     private Short languageId;
     private Short originalLanguageId;
 
