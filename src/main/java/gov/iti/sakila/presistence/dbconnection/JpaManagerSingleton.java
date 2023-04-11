@@ -1,4 +1,4 @@
-package gov.iti.sakila.presistence.connection;
+package gov.iti.sakila.presistence.dbconnection;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

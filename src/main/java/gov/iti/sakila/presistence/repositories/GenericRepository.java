@@ -1,6 +1,6 @@
 package gov.iti.sakila.presistence.repositories;
 
-import gov.iti.sakila.presistence.connection.JpaManagerSingleton;
+import gov.iti.sakila.presistence.dbconnection.JpaManagerSingleton;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
@@ -32,7 +32,8 @@ public class GenericRepository<T, Id> {
         entityManager.refresh(obj);
         return obj;
     }
-    public T update(T obj){ // need to check if Category exists ?
+    public T update(T obj){
+        // need to check if Category exists ?
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         entityManager.merge(obj);
@@ -41,16 +42,20 @@ public class GenericRepository<T, Id> {
         return obj;
     }
 
-    public T deleteById( Id id){
+    public boolean deleteById( Id id){
+
         EntityTransaction transaction = entityManager.getTransaction();;
         Object obj = entityManager.find(entityClass, id);
+        if(obj ==null)
+            return false;
         transaction.begin();
         entityManager.remove(obj);
         transaction.commit();
-        return (T) obj;
+        return true;
     }
 
     public T findById( Id id){
+        //System.out.println(entityClass.getSimpleName());
         return (T) entityManager.find(entityClass, id);
     }
 
