@@ -4,6 +4,7 @@ import gov.iti.sakila.presistence.dtos.customer.CustomerDto;
 import gov.iti.sakila.presistence.dtos.film.FilmDto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -20,6 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
+@XmlRootElement
 public class RentalDto implements Serializable {
     private Integer rentalId;
     private Date rentalDate;

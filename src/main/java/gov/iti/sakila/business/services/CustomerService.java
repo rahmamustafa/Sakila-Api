@@ -34,7 +34,7 @@ public class CustomerService {
     public CustomerDto findCustomerById(@WebParam(name = "id")Short customerId){
         return CustomerMapper.INSTANCE.customertoCustomerDto(customerRepository.findById(customerId));
     }
-    public boolean deleteCustomerById(@WebParam(name = "id")Short customerId){
+    public int deleteCustomerById(@WebParam(name = "id")Short customerId){
         return customerRepository.deleteById(customerId);
     }
 //    public Customer update(Customer customer){

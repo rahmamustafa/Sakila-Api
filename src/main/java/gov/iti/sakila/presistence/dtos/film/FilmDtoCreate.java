@@ -6,6 +6,7 @@ import jakarta.persistence.TemporalType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ import java.util.Date;
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
+@XmlRootElement
 public class FilmDtoCreate implements Serializable {
     @XmlElement(required=true)
     private String title;

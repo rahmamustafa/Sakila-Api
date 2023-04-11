@@ -40,7 +40,7 @@ public class StoreService {
         Store store  = storeRepository.findById(storeId);
         return StoreMapper.INSTANCE.storetoStoreDto(store);
     }
-    public boolean deleteStoreById(@WebParam(name = "id")Short storeId){
+    public int deleteStoreById(@WebParam(name = "id")Short storeId){
         return storeRepository.deleteById(storeId);
     }
     public List<StoreDto> findAllStores(){

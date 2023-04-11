@@ -1,11 +1,11 @@
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
     <endpoint
             name="ActorWebService"
-            implementation="gov.iti.sakila.business.services.ActorService"
+            implementation="gov.iti.sakila.business.endpoints.soap.ActorEndPoint"
             url-pattern="/ws/actors"/>
     <endpoint
             name="CategoryWebService"
-            implementation="gov.iti.sakila.business.services.CategoryService"
+            implementation="gov.iti.sakila.business.endpoints.soap.CategoryEndPoint"
             url-pattern="/ws/categories"/>
     <endpoint
             name="CustomerWebService"

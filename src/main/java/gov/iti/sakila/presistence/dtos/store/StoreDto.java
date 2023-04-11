@@ -5,6 +5,7 @@ import gov.iti.sakila.presistence.dtos.StaffDto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -19,6 +20,7 @@ import java.util.Date;
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
+@XmlRootElement
 public class StoreDto implements Serializable {
     private Short storeId;
     private Date lastUpdate;

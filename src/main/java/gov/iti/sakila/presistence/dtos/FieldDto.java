@@ -1,26 +1,21 @@
 package gov.iti.sakila.presistence.dtos;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.io.Serializable;
-
-/**
- * A DTO for the {@link gov.iti.sakila.presistence.entities.Staff} entity
- */
 @Data
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
 @XmlRootElement
-public class StaffDto implements Serializable {
-    private String firstName;
-    private String lastName;
-//    private byte[] picture;
-    private String email;
-    private boolean active;
+public class FieldDto<T> {
+    @NotBlank(message = "please enter valid field")
+    @XmlElement(required=true)
+    private T field;
 }

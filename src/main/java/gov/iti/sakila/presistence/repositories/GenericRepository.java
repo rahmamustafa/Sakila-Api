@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
+import jakarta.ws.rs.NotFoundException;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class GenericRepository<T, Id> {
     protected Class<T> entityClass;
     protected EntityManager entityManager;
 
-    public GenericRepository(Class<T> entityClass) {
+    protected GenericRepository(Class<T> entityClass) {
         this.entityManager = JpaManagerSingleton
                 .INSTANCE.getEntityManager();
         this.entityClass = entityClass;
@@ -42,16 +43,16 @@ public class GenericRepository<T, Id> {
         return obj;
     }
 
-    public boolean deleteById( Id id){
+    public int deleteById( Id id){
 
         EntityTransaction transaction = entityManager.getTransaction();;
         Object obj = entityManager.find(entityClass, id);
         if(obj ==null)
-            return false;
+            throw new NotFoundException(entityClass.getSimpleName()+" Not Found");
         transaction.begin();
         entityManager.remove(obj);
         transaction.commit();
-        return true;
+        return 1;
     }
 
     public T findById( Id id){

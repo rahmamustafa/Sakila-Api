@@ -4,6 +4,7 @@ import gov.iti.sakila.presistence.dtos.store.StoreDto;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -18,6 +19,7 @@ import java.util.Date;
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
+@XmlRootElement
 public class CustomerDto implements Serializable {
     private Short customerId;
     private String firstName;

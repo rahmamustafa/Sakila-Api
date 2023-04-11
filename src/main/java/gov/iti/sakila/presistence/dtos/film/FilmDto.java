@@ -2,6 +2,7 @@ package gov.iti.sakila.presistence.dtos.film;
 
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.*;
 
 import java.io.Serializable;
@@ -17,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
+@XmlRootElement
 public class FilmDto implements Serializable {
     private Short filmId;
     private String title;

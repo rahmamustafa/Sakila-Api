@@ -7,6 +7,7 @@ import java.util.List;
 import gov.iti.sakila.presistence.entities.Actor;
 import gov.iti.sakila.presistence.entities.Film;
 import gov.iti.sakila.presistence.entities.FilmActor;
+import jakarta.ws.rs.NotFoundException;
 
 public class ActorRepository extends GenericRepository<Actor, Short> {
 
@@ -33,10 +34,12 @@ public class ActorRepository extends GenericRepository<Actor, Short> {
     }
     public int addFilmToActor(Short actorId , Short filmId){
         if(findById(actorId)==null)
-            return 0;
+            throw new NotFoundException("Actor Not Found");;
         if(filmRepository.findById(filmId)==null)
-            return 0;
+            throw new NotFoundException("Film Not Found");
         FilmActor filmActor  = new FilmActor(actorId, filmId);
+        if(filmActorRepository.findById(filmActor.getFilmActorPK())!=null)
+            throw new IllegalArgumentException("This actor in this film");
         filmActor.setLastUpdate(Date.from(Instant.now()));
         filmActorRepository.create(filmActor);
         return 1;

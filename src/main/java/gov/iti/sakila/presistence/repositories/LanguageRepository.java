@@ -9,6 +9,7 @@ import java.util.List;
 
 public class LanguageRepository extends GenericRepository<Language,Short > {
 
+//    static LanguageRepository instance = new LanguageRepository();
     public LanguageRepository(){
         super(Language.class);
     }

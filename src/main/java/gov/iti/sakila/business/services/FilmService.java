@@ -46,7 +46,7 @@ public class FilmService {
         Film film = filmRepository.findById(filmId);
         return FilmMapper.INSTANCE.filmToFilmDto(film);
     }
-    public boolean deleteFilmById(@WebParam(name = "id")Short filmId){
+    public int deleteFilmById(@WebParam(name = "id")Short filmId){
         return filmRepository.deleteById(filmId);
     }
 //    public Film update(Film film){

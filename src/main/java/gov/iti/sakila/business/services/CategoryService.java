@@ -13,21 +13,29 @@ import gov.iti.sakila.presistence.entities.Film;
 import gov.iti.sakila.presistence.repositories.CategoryRepository;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
-@WebService
+import jakarta.ws.rs.NotFoundException;
+import lombok.NonNull;
+
 public class CategoryService {
     private CategoryRepository categoryRepository = new CategoryRepository();
 
-    public CategoryDto createCategory(@WebParam(name = "name") String categoryName){
+    public CategoryDto createCategory(@NonNull String categoryName){
+        if(categoryName.isBlank())
+            throw new IllegalArgumentException("please enter valid data");
         Category category = new Category();
         category.setName(categoryName);
         category.setLastUpdate(Date.from(Instant.now()));
         categoryRepository.create(category);
         return CategoryMapper.INSTANCE.categoryToCategoryDto(category);
     }
-    public CategoryDto findCategoryById(@WebParam(name = "id")Short categoryId){
+    public CategoryDto findCategoryById(@NonNull Short categoryId){
+        if(categoryId<=0)
+            throw new IllegalArgumentException("please enter valid data");
         return CategoryMapper.INSTANCE.categoryToCategoryDto(categoryRepository.findById(categoryId));
     }
-    public boolean deleteCategoryById(@WebParam(name = "id")Short categoryId){
+    public int deleteCategoryById(@NonNull Short categoryId){
+        if(categoryId<=0)
+            throw new IllegalArgumentException("please enter valid data");
         return categoryRepository.deleteById(categoryId);
     }
 //    public Category update(Category category){
@@ -37,16 +45,24 @@ public class CategoryService {
 //    }
     public List<CategoryDto> findAllCategories(){
          List<Category> categories =  categoryRepository.findAll();
+         if(categories.size()==0)
+             throw new NotFoundException("Not Found");
         return categories.stream().map(CategoryMapper.INSTANCE::categoryToCategoryDto).toList();
     }
-    public CategoryDto findCategoryByName(@WebParam(name = "name")String name){
+    public CategoryDto findCategoryByName(@NonNull String name){
+        if(name.isBlank())
+            throw new IllegalArgumentException("please enter valid data");
         return CategoryMapper.INSTANCE.categoryToCategoryDto(categoryRepository.findByName(name));
 
     }
-    public List<FilmDto> findCategoryFilms(@WebParam(name = "id")Short CategoryId){
-        return CategoryMapper.INSTANCE.categoryToCategoryDto(categoryRepository.findById(CategoryId)).getFilmList();
+    public List<FilmDto> findCategoryFilms(@NonNull Short categoryId){
+        if(categoryId<=0)
+            throw new IllegalArgumentException("please enter valid data");
+        return CategoryMapper.INSTANCE.categoryToCategoryDto(categoryRepository.findById(categoryId)).getFilmList();
     }
-    public int addFilmToCategory(@WebParam(name = "filmId")Short filmId ,@WebParam(name = "categoryId") Short categoryId){
+    public int addFilmToCategory(@NonNull Short filmId ,@NonNull Short categoryId){
+        if(categoryId<=0  || filmId<=0)
+            throw new IllegalArgumentException("please enter valid data");
         return categoryRepository.addFilmToCategory(filmId,categoryId);
     }
     

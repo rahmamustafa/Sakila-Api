@@ -31,7 +31,7 @@ import jakarta.persistence.TemporalType;
  * @author Rahomy
  */
 @Entity
-@Table(name = "film")
+@Table(name = "film") //todo add rating enum
 @NamedQueries({
     @NamedQuery(name = "Film.findAll", query = "SELECT f FROM Film f"),
     @NamedQuery(name = "Film.findByFilmId", query = "SELECT f FROM Film f WHERE f.filmId = :filmId"),

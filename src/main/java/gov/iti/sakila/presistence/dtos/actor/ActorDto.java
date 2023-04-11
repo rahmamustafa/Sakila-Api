@@ -16,6 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @XmlAccessorType(XmlAccessType.FIELD)
 @ToString
+@XmlRootElement
 public class ActorDto implements Serializable {
     private Short actorId;
     private String firstName;
