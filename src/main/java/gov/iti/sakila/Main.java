@@ -1,26 +1,17 @@
 package gov.iti.sakila;
 
-import gov.iti.sakila.business.services.StoreService;
-import gov.iti.sakila.presistence.dtos.actor.ActorDto;
-import gov.iti.sakila.business.services.ActorService;
-import gov.iti.sakila.business.services.FilmService;
-import gov.iti.sakila.presistence.dtos.actor.ActorDtoCreate;
-import gov.iti.sakila.presistence.dtos.film.FilmDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDtoCreate;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-
-import java.math.BigDecimal;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.Year;
-import java.util.Date;
+import gov.iti.sakila.presistence.repositories.FilmRepository;
+import gov.iti.sakila.presistence.repositories.InventoryRepository;
+import gov.iti.sakila.presistence.repositories.StoreRepository;
 
 public class Main {
     public static void main(String[] args) {
-        FilmService filmService = new FilmService();
-        ActorService actorService = new ActorService();
-        StoreService storeService = new StoreService();
+       // FilmService filmService = new FilmService();
+        FilmRepository filmRepository = new FilmRepository();
+        StoreRepository storeRepository = new StoreRepository();
+        InventoryRepository inventoryRepository = new InventoryRepository();
+//        ActorService actorService = new ActorService();
+//        StoreService storeService = new StoreService();
        
 //        Film film = new Film("Rahma",Short.valueOf("6"),BigDecimal.valueOf(20.99),
 //                                BigDecimal.valueOf(20.99),Date.from(Instant.now()));
@@ -41,6 +32,7 @@ public class Main {
 ////        System.out.println( actorService.addFilmToActor(Short.valueOf("202"),Short.valueOf("2")));
 //        System.out.println(filmService.createFilm(filmDtoCreate));
 //        System.out.println(storeService.findNumberOfEachFilm((short) 1));
-        System.out.println(filmService.findNumberOfActor(Short.valueOf("1")));
+//        System.out.println(storeRepository.getRentalCount());
+//        System.out.println(inventoryRepository.findFilmRentedInventory(Short.valueOf("2")).toString());
     }
 }

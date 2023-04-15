@@ -3,6 +3,7 @@ package gov.iti.sakila.presistence.dtos.film;
 import gov.iti.sakila.presistence.entities.Language;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.*;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -27,18 +28,24 @@ import java.util.Date;
 @ToString
 @XmlRootElement
 public class FilmDtoCreate implements Serializable {
+    @NotBlank(message = "please enter title")
     @XmlElement(required=true)
     private String title;
     private String description;
 //    private int releaseYear;
+    @Min(value = 1,message = "please enter rental duration")
     @XmlElement(required=true)
     private Short rentalDuration;
+    @Min(value = 1,message = "please enter rental rate")
     @XmlElement(required=true)
     private BigDecimal rentalRate;
     private Short length;
+//    @Size(min =1,message = "please enter replacement cost")
+    @DecimalMin("1")
     @XmlElement(required=true)
     private BigDecimal replacementCost;
     private String specialFeatures;
+    @Min(value = 1,message = "please enter language id")
     @XmlElement(required=true)
     private Short languageId;
     private Short originalLanguageId;

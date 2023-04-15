@@ -9,6 +9,7 @@ import gov.iti.sakila.presistence.entities.Customer;
 import gov.iti.sakila.presistence.entities.Film;
 import gov.iti.sakila.presistence.entities.Inventory;
 import gov.iti.sakila.presistence.entities.Rental;
+import jakarta.ws.rs.NotFoundException;
 
 public class CustomerRepository extends GenericRepository<Customer , Short> {
 
@@ -35,7 +36,7 @@ public class CustomerRepository extends GenericRepository<Customer , Short> {
     public List<Film> findCustomerRentedFilms(Short CustomerId){
         Customer customer = findById(CustomerId);
         if(customer==null)
-            return null;
+                throw new NotFoundException("Customer Not Found");
         List<Film> films = customer.getRentalList().stream().map(Rental::getInventoryId).map(Inventory::getFilmId).toList();
         return films;
     }

@@ -18,7 +18,7 @@ public class ValidatorHandler {
     }
     private ValidatorHandler(){}
 
-    public <T> boolean isValid(@NonNull T obj){
+    public <T> boolean validate(@NonNull T obj){
         Set<ConstraintViolation<T>> violations = factory.getValidator().validate(obj);
         if (!violations.isEmpty()) {
             throw new IllegalArgumentException(violations.stream()

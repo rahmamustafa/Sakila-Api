@@ -1,6 +1,10 @@
 package gov.iti.sakila.presistence.dtos.customer;
 
 import gov.iti.sakila.presistence.dtos.store.StoreDto;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -21,16 +25,22 @@ import java.util.Date;
 @ToString
 @XmlRootElement
 public class CustomerDtoCreate implements Serializable {
+    @NotBlank(message = "please enter first name")
     @XmlElement(required=true)
     private String firstName;
     @XmlElement(required=true)
+    @NotBlank(message = "please enter last name")
     private String lastName;
     private String email;
+    private Date lastUpdate;
+    @NotNull(message = "please enter active status")
     @XmlElement(required=true)
     private boolean active;
-    private Date lastUpdate;
+    @Min(value = 1,message = "please enter store id")
     @XmlElement(required=true)
     private Short store;
+//    @Size(min = 1,message = "please enter address id")
+    @Min(value = 1,message = "please enter address id")
     @XmlElement(required=true)
     private Short address;
 

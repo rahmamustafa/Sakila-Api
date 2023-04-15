@@ -18,10 +18,11 @@ import lombok.NonNull;
 
 public class CategoryService {
     private CategoryRepository categoryRepository = new CategoryRepository();
+    private final String ERROR_MESSAGE = "Please Enter Valid Data";
 
     public CategoryDto createCategory(@NonNull String categoryName){
         if(categoryName.isBlank())
-            throw new IllegalArgumentException("please enter valid data");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         Category category = new Category();
         category.setName(categoryName);
         category.setLastUpdate(Date.from(Instant.now()));
@@ -30,12 +31,15 @@ public class CategoryService {
     }
     public CategoryDto findCategoryById(@NonNull Short categoryId){
         if(categoryId<=0)
-            throw new IllegalArgumentException("please enter valid data");
-        return CategoryMapper.INSTANCE.categoryToCategoryDto(categoryRepository.findById(categoryId));
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        Category category = categoryRepository.findById(categoryId);
+        if(category==null)
+            throw new NotFoundException("Category Not Found");
+        return CategoryMapper.INSTANCE.categoryToCategoryDto(category);
     }
     public int deleteCategoryById(@NonNull Short categoryId){
         if(categoryId<=0)
-            throw new IllegalArgumentException("please enter valid data");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         return categoryRepository.deleteById(categoryId);
     }
 //    public Category update(Category category){
@@ -51,18 +55,24 @@ public class CategoryService {
     }
     public CategoryDto findCategoryByName(@NonNull String name){
         if(name.isBlank())
-            throw new IllegalArgumentException("please enter valid data");
-        return CategoryMapper.INSTANCE.categoryToCategoryDto(categoryRepository.findByName(name));
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        Category category = categoryRepository.findByName(name);
+        if(category==null)
+            throw new NotFoundException("Category Not Found");
+        return CategoryMapper.INSTANCE.categoryToCategoryDto(category);
 
     }
     public List<FilmDto> findCategoryFilms(@NonNull Short categoryId){
         if(categoryId<=0)
-            throw new IllegalArgumentException("please enter valid data");
-        return CategoryMapper.INSTANCE.categoryToCategoryDto(categoryRepository.findById(categoryId)).getFilmList();
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        Category category = categoryRepository.findById(categoryId);
+        if(category==null)
+            throw new NotFoundException("Category Not Found");
+        return CategoryMapper.INSTANCE.categoryToCategoryDto(category).getFilmList();
     }
     public int addFilmToCategory(@NonNull Short filmId ,@NonNull Short categoryId){
         if(categoryId<=0  || filmId<=0)
-            throw new IllegalArgumentException("please enter valid data");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         return categoryRepository.addFilmToCategory(filmId,categoryId);
     }
     

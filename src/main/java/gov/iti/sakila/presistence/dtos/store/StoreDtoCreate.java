@@ -2,6 +2,7 @@ package gov.iti.sakila.presistence.dtos.store;
 
 import gov.iti.sakila.presistence.dtos.AddressDto;
 import gov.iti.sakila.presistence.dtos.StaffDto;
+import jakarta.validation.constraints.Min;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
@@ -22,8 +23,10 @@ import java.util.Date;
 @ToString
 @XmlRootElement
 public class StoreDtoCreate implements Serializable {
+    @Min(value = 1,message = "please enter address id")
     @XmlElement(required=true)
     private Short addressId;
+    @Min(value = 1,message = "please enter manager id")
     @XmlElement(required=true)
     private Short managerStaffId;
 }

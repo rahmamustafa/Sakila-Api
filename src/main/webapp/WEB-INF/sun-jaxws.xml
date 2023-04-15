@@ -9,19 +9,18 @@
             url-pattern="/ws/categories"/>
     <endpoint
             name="CustomerWebService"
-            implementation="gov.iti.sakila.business.services.CustomerService"
+            implementation="gov.iti.sakila.business.endpoints.soap.CustomerEndPoint"
             url-pattern="/ws/customers"/>
     <endpoint
             name="FilmWebService"
-            implementation="gov.iti.sakila.business.services.FilmService"
+            implementation="gov.iti.sakila.business.endpoints.soap.FilmEndPoint"
             url-pattern="/ws/films"/>
     <endpoint
             name="StoreWebService"
-            implementation="gov.iti.sakila.business.services.StoreService"
+            implementation="gov.iti.sakila.business.endpoints.soap.StoreEndPoint"
             url-pattern="/ws/stores"/>
     <endpoint
-            name="CustomerWebService"
-            implementation="gov.iti.sakila.business.services.CustomerService"
-            url-pattern="/ws/customers"/>
-
+            name="InventoryWebService"
+            implementation="gov.iti.sakila.business.endpoints.soap.InventoryEndPoint"
+            url-pattern="/ws/inventories"/>
 </endpoints>
