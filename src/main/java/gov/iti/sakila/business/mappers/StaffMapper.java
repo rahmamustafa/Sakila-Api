@@ -1,6 +1,6 @@
 package gov.iti.sakila.business.mappers;
 
-import gov.iti.sakila.presistence.dtos.StaffDto;
+import gov.iti.sakila.business.services.dtos.StaffDto;
 import gov.iti.sakila.presistence.entities.Staff;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;

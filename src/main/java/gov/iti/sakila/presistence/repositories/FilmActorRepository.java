@@ -7,11 +7,8 @@ import gov.iti.sakila.presistence.entities.FilmActorPK;
 
 import java.util.List;
 
-public class FilmActorRepository extends GenericRepository<FilmActor, FilmActorPK> {
+public interface FilmActorRepository extends GenericRepository<FilmActor, FilmActorPK> {
 
-    public FilmActorRepository(){
-        super(FilmActor.class);
-    }
 
 
 }

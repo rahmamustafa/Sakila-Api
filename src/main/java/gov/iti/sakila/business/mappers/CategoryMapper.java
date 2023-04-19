@@ -1,10 +1,7 @@
 package gov.iti.sakila.business.mappers;
 
-import gov.iti.sakila.presistence.dtos.AddressDto;
-import gov.iti.sakila.presistence.dtos.CategoryDto;
-import gov.iti.sakila.presistence.dtos.StaffDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDto;
-import gov.iti.sakila.presistence.dtos.store.StoreDto;
+import gov.iti.sakila.business.services.dtos.CategoryDto;
+import gov.iti.sakila.business.services.dtos.film.FilmDto;
 import gov.iti.sakila.presistence.entities.*;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;

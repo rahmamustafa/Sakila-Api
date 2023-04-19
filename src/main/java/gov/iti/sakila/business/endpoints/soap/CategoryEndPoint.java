@@ -1,21 +1,17 @@
 package gov.iti.sakila.business.endpoints.soap;
 
-import gov.iti.sakila.business.mappers.CategoryMapper;
 import gov.iti.sakila.business.services.CategoryService;
-import gov.iti.sakila.presistence.dtos.CategoryDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDto;
-import gov.iti.sakila.presistence.entities.Category;
-import gov.iti.sakila.presistence.repositories.CategoryRepository;
+import gov.iti.sakila.business.services.servicesimpl.CategoryServiceImpl;
+import gov.iti.sakila.business.services.dtos.CategoryDto;
+import gov.iti.sakila.business.services.dtos.film.FilmDto;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 @WebService
 public class CategoryEndPoint {
-    private final CategoryService categoryService = new CategoryService();
+    private final CategoryService categoryService = new CategoryServiceImpl();
 
     public CategoryDto createCategory(@WebParam(name = "name") String categoryName){
         return categoryService.createCategory(categoryName);

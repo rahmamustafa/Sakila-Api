@@ -1,26 +1,23 @@
 package gov.iti.sakila.business.endpoints.soap;
 
-import gov.iti.sakila.business.mappers.StoreMapper;
 import gov.iti.sakila.business.services.FilmService;
-import gov.iti.sakila.presistence.dtos.actor.ActorDto;
-import gov.iti.sakila.presistence.dtos.customer.CustomerDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDtoCreate;
-import gov.iti.sakila.presistence.dtos.film.FilmDtoWithCountForStore;
-import gov.iti.sakila.presistence.dtos.film.StoreFilmInventoryDto;
-import gov.iti.sakila.presistence.dtos.store.StoreDto;
-import gov.iti.sakila.presistence.dtos.store.StoreInventoryDto;
-import gov.iti.sakila.presistence.entities.Store;
+import gov.iti.sakila.business.services.servicesimpl.FilmServiceImpl;
+import gov.iti.sakila.business.services.dtos.actor.ActorDto;
+import gov.iti.sakila.business.services.dtos.customer.CustomerDto;
+import gov.iti.sakila.business.services.dtos.film.FilmDto;
+import gov.iti.sakila.business.services.dtos.film.FilmDtoCreate;
+import gov.iti.sakila.business.services.dtos.film.FilmDtoWithCountForStore;
+import gov.iti.sakila.business.services.dtos.store.StoreDto;
+import gov.iti.sakila.business.services.dtos.store.StoreInventoryDto;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
-import lombok.NonNull;
 
 import java.util.Date;
 import java.util.List;
 
 @WebService
 public class FilmEndPoint {
-    private final FilmService filmService = new FilmService();
+    private final FilmService filmService = new FilmServiceImpl();
     public FilmDto createFilm(@WebParam(name = "film") FilmDtoCreate filmDtoCreate){
         return filmService.createFilm(filmDtoCreate);
     }
@@ -100,7 +97,7 @@ public class FilmEndPoint {
     }
 
     public long findCountFilmRentals(@WebParam(name = "id") Short filmId){
-        return filmService.findCountFilmRentals(filmId);
+        return filmService.findFilmRentalCount(filmId);
     }
     public List<StoreInventoryDto> findWhereFilmAvailable(@WebParam(name = "id") Short filmId){
         return filmService.findWhereFilmAvailable(filmId);

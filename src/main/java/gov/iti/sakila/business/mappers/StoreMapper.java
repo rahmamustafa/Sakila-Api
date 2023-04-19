@@ -1,9 +1,8 @@
 package gov.iti.sakila.business.mappers;
 
-import gov.iti.sakila.presistence.dtos.AddressDto;
-import gov.iti.sakila.presistence.dtos.StaffDto;
-import gov.iti.sakila.presistence.dtos.store.StoreDto;
-import gov.iti.sakila.presistence.dtos.store.StoreDtoCreate;
+import gov.iti.sakila.business.services.dtos.AddressDto;
+import gov.iti.sakila.business.services.dtos.StaffDto;
+import gov.iti.sakila.business.services.dtos.store.StoreDto;
 import gov.iti.sakila.presistence.entities.Address;
 import gov.iti.sakila.presistence.entities.Inventory;
 import gov.iti.sakila.presistence.entities.Staff;

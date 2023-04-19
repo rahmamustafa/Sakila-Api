@@ -1,10 +1,8 @@
 package gov.iti.sakila.business.mappers;
 
-import gov.iti.sakila.presistence.dtos.customer.CustomerDto;
-import gov.iti.sakila.presistence.dtos.customer.CustomerDtoCreate;
-import gov.iti.sakila.presistence.dtos.store.StoreDto;
+import gov.iti.sakila.business.services.dtos.customer.CustomerDto;
+import gov.iti.sakila.business.services.dtos.customer.CustomerDtoCreate;
 import gov.iti.sakila.presistence.entities.Customer;
-import gov.iti.sakila.presistence.entities.Store;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

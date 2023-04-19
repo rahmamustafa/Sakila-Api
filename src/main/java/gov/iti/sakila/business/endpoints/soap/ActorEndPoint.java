@@ -1,16 +1,16 @@
 package gov.iti.sakila.business.endpoints.soap;
 import gov.iti.sakila.business.services.ActorService;
-import gov.iti.sakila.business.util.ValidatorHandler;
-import gov.iti.sakila.presistence.dtos.actor.ActorDto;
-import gov.iti.sakila.presistence.dtos.actor.ActorDtoCreate;
-import gov.iti.sakila.presistence.dtos.film.FilmDto;
+import gov.iti.sakila.business.services.servicesimpl.ActorServiceImpl;
+import gov.iti.sakila.business.services.dtos.actor.ActorDto;
+import gov.iti.sakila.business.services.dtos.actor.ActorDtoCreate;
+import gov.iti.sakila.business.services.dtos.film.FilmDto;
 
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
 import java.util.List;
 @WebService
 public class ActorEndPoint {
-    ActorService actorService = new ActorService();
+    ActorService actorService = new ActorServiceImpl();
     public ActorDto createActor(@WebParam(name = "actor") ActorDtoCreate actorDtoCreate){
         return actorService.createActor(actorDtoCreate);
     }
