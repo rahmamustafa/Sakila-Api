@@ -65,7 +65,7 @@ All subsequent requests the user-agent may make are discovered inside the respon
 
 
   
-  * And Finally you need to run command
+  To run project you need to run command
   ```bash
     mvn clean install tomcat7:deploy
 ```
