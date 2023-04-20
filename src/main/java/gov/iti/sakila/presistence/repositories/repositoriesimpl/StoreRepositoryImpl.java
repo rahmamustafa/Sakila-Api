@@ -16,15 +16,11 @@ public class StoreRepositoryImpl extends GenericRepositoryImpl<Store,Short > imp
     @Override
     public Staff findStoreManagerStaff(Short storeId){
         Store store = findById(storeId);
-        if(store==null)
-            throw new NotFoundException("Store Not Found");
         return store.getManagerStaffId();
     }
     @Override
     public Address findStoreAddress(Short storeId){
         Store store = findById(storeId);
-        if(store==null)
-            throw new NotFoundException("Store Not Found");
         return store.getAddressId();
     }
     @Override
