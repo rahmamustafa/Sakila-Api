@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by XML-WS Runtime (https://github.com/eclipse-ee4j/metro-jax-ws). Runtime's version is XML-WS Runtime 4.0.1 git-revision#298606e. --><xs:schema xmlns:tns="http://soap.endpoints.business.sakila.iti.gov/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap.endpoints.business.sakila.iti.gov/">
+
+<xs:element name="createCustomer" type="tns:createCustomer"/>
+
+<xs:element name="createCustomerResponse" type="tns:createCustomerResponse"/>
+
+<xs:element name="customerDto" type="tns:customerDto"/>
+
+<xs:element name="customerDtoCreate" type="tns:customerDtoCreate"/>
+
+<xs:element name="deleteCustomerById" type="tns:deleteCustomerById"/>
+
+<xs:element name="deleteCustomerByIdResponse" type="tns:deleteCustomerByIdResponse"/>
+
+<xs:element name="filmDto" type="tns:filmDto"/>
+
+<xs:element name="findActiveCustomers" type="tns:findActiveCustomers"/>
+
+<xs:element name="findActiveCustomersResponse" type="tns:findActiveCustomersResponse"/>
+
+<xs:element name="findAllCustomers" type="tns:findAllCustomers"/>
+
+<xs:element name="findAllCustomersResponse" type="tns:findAllCustomersResponse"/>
+
+<xs:element name="findCustomerByCreateDate" type="tns:findCustomerByCreateDate"/>
+
+<xs:element name="findCustomerByCreateDateResponse" type="tns:findCustomerByCreateDateResponse"/>
+
+<xs:element name="findCustomerByEmail" type="tns:findCustomerByEmail"/>
+
+<xs:element name="findCustomerByEmailResponse" type="tns:findCustomerByEmailResponse"/>
+
+<xs:element name="findCustomerByFirstName" type="tns:findCustomerByFirstName"/>
+
+<xs:element name="findCustomerByFirstNameResponse" type="tns:findCustomerByFirstNameResponse"/>
+
+<xs:element name="findCustomerById" type="tns:findCustomerById"/>
+
+<xs:element name="findCustomerByIdResponse" type="tns:findCustomerByIdResponse"/>
+
+<xs:element name="findCustomerRentedFilms" type="tns:findCustomerRentedFilms"/>
+
+<xs:element name="findCustomerRentedFilmsResponse" type="tns:findCustomerRentedFilmsResponse"/>
+
+<xs:element name="findCustomerUnReturnedFilms" type="tns:findCustomerUnReturnedFilms"/>
+
+<xs:element name="findCustomerUnReturnedFilmsResponse" type="tns:findCustomerUnReturnedFilmsResponse"/>
+
+<xs:complexType name="findCustomerByEmail">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerByEmailResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customerDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="customerDto">
+<xs:sequence>
+<xs:element name="customerId" type="xs:short" minOccurs="0"/>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="active" type="xs:boolean"/>
+<xs:element name="createDate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerByCreateDate">
+<xs:sequence>
+<xs:element name="createDate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerByCreateDateResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customerDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCustomerById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCustomerByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createCustomer">
+<xs:sequence>
+<xs:element name="customer" type="tns:customerDtoCreate" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="customerDtoCreate">
+<xs:sequence>
+<xs:element name="firstName" type="xs:string"/>
+<xs:element name="lastName" type="xs:string"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="active" type="xs:boolean"/>
+<xs:element name="store" type="xs:short"/>
+<xs:element name="address" type="xs:short"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createCustomerResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customerDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllCustomers">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllCustomersResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customerDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerRentedFilms">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerRentedFilmsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="filmDto">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="rentalDuration" type="xs:short"/>
+<xs:element name="rentalRate" type="xs:decimal" minOccurs="0"/>
+<xs:element name="length" type="xs:short" minOccurs="0"/>
+<xs:element name="replacementCost" type="xs:decimal" minOccurs="0"/>
+<xs:element name="rating" type="xs:string" minOccurs="0"/>
+<xs:element name="specialFeatures" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="language" type="xs:string" minOccurs="0"/>
+<xs:element name="originalLanguage" type="xs:string" minOccurs="0"/>
+<xs:element name="actorsNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findActiveCustomers">
+<xs:sequence>
+<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findActiveCustomersResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customerDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customerDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerByFirstName">
+<xs:sequence>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerByFirstNameResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customerDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerUnReturnedFilms">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCustomerUnReturnedFilmsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

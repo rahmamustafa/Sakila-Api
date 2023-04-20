@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by XML-WS Runtime (https://github.com/eclipse-ee4j/metro-jax-ws). Runtime's version is XML-WS Runtime 4.0.1 git-revision#298606e. --><xs:schema xmlns:tns="http://soap.endpoints.business.sakila.iti.gov/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap.endpoints.business.sakila.iti.gov/">
+
+<xs:element name="addFilmToCategory" type="tns:addFilmToCategory"/>
+
+<xs:element name="addFilmToCategoryResponse" type="tns:addFilmToCategoryResponse"/>
+
+<xs:element name="categoryDto" type="tns:categoryDto"/>
+
+<xs:element name="createCategory" type="tns:createCategory"/>
+
+<xs:element name="createCategoryResponse" type="tns:createCategoryResponse"/>
+
+<xs:element name="deleteCategoryById" type="tns:deleteCategoryById"/>
+
+<xs:element name="deleteCategoryByIdResponse" type="tns:deleteCategoryByIdResponse"/>
+
+<xs:element name="filmDto" type="tns:filmDto"/>
+
+<xs:element name="findAllCategories" type="tns:findAllCategories"/>
+
+<xs:element name="findAllCategoriesResponse" type="tns:findAllCategoriesResponse"/>
+
+<xs:element name="findCategoryById" type="tns:findCategoryById"/>
+
+<xs:element name="findCategoryByIdResponse" type="tns:findCategoryByIdResponse"/>
+
+<xs:element name="findCategoryByName" type="tns:findCategoryByName"/>
+
+<xs:element name="findCategoryByNameResponse" type="tns:findCategoryByNameResponse"/>
+
+<xs:element name="findCategoryFilms" type="tns:findCategoryFilms"/>
+
+<xs:element name="findCategoryFilmsResponse" type="tns:findCategoryFilmsResponse"/>
+
+<xs:complexType name="findAllCategories">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllCategoriesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:categoryDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="categoryDto">
+<xs:sequence>
+<xs:element name="categoryId" type="xs:short" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="filmList" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="film" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="filmDto">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="rentalDuration" type="xs:short"/>
+<xs:element name="rentalRate" type="xs:decimal" minOccurs="0"/>
+<xs:element name="length" type="xs:short" minOccurs="0"/>
+<xs:element name="replacementCost" type="xs:decimal" minOccurs="0"/>
+<xs:element name="rating" type="xs:string" minOccurs="0"/>
+<xs:element name="specialFeatures" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="language" type="xs:string" minOccurs="0"/>
+<xs:element name="originalLanguage" type="xs:string" minOccurs="0"/>
+<xs:element name="actorsNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCategoryByName">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCategoryByNameResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:categoryDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCategoryFilms">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCategoryFilmsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createCategory">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createCategoryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:categoryDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCategoryById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCategoryByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:categoryDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addFilmToCategory">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="categoryId" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addFilmToCategoryResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCategoryById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteCategoryByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

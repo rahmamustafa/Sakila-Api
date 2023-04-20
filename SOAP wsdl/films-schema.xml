@@ -1,0 +1,498 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by XML-WS Runtime (https://github.com/eclipse-ee4j/metro-jax-ws). Runtime's version is XML-WS Runtime 4.0.1 git-revision#298606e. --><xs:schema xmlns:tns="http://soap.endpoints.business.sakila.iti.gov/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap.endpoints.business.sakila.iti.gov/">
+
+<xs:element name="actorDto" type="tns:actorDto"/>
+
+<xs:element name="addActorToFilm" type="tns:addActorToFilm"/>
+
+<xs:element name="addActorToFilmResponse" type="tns:addActorToFilmResponse"/>
+
+<xs:element name="addCategoryToFilm" type="tns:addCategoryToFilm"/>
+
+<xs:element name="addCategoryToFilmResponse" type="tns:addCategoryToFilmResponse"/>
+
+<xs:element name="addressDto" type="tns:addressDto"/>
+
+<xs:element name="createFilm" type="tns:createFilm"/>
+
+<xs:element name="createFilmResponse" type="tns:createFilmResponse"/>
+
+<xs:element name="customerDto" type="tns:customerDto"/>
+
+<xs:element name="deleteFilmById" type="tns:deleteFilmById"/>
+
+<xs:element name="deleteFilmByIdResponse" type="tns:deleteFilmByIdResponse"/>
+
+<xs:element name="filmDto" type="tns:filmDto"/>
+
+<xs:element name="filmDtoCreate" type="tns:filmDtoCreate"/>
+
+<xs:element name="filmDtoWithCountForStore" type="tns:filmDtoWithCountForStore"/>
+
+<xs:element name="findAllFilms" type="tns:findAllFilms"/>
+
+<xs:element name="findAllFilmsResponse" type="tns:findAllFilmsResponse"/>
+
+<xs:element name="findByRating" type="tns:findByRating"/>
+
+<xs:element name="findByRatingResponse" type="tns:findByRatingResponse"/>
+
+<xs:element name="findByRentalDuration" type="tns:findByRentalDuration"/>
+
+<xs:element name="findByRentalDurationResponse" type="tns:findByRentalDurationResponse"/>
+
+<xs:element name="findCountFilmRentals" type="tns:findCountFilmRentals"/>
+
+<xs:element name="findCountFilmRentalsResponse" type="tns:findCountFilmRentalsResponse"/>
+
+<xs:element name="findFilmActors" type="tns:findFilmActors"/>
+
+<xs:element name="findFilmActorsResponse" type="tns:findFilmActorsResponse"/>
+
+<xs:element name="findFilmAvailableInWhichStore" type="tns:findFilmAvailableInWhichStore"/>
+
+<xs:element name="findFilmAvailableInWhichStoreResponse" type="tns:findFilmAvailableInWhichStoreResponse"/>
+
+<xs:element name="findFilmById" type="tns:findFilmById"/>
+
+<xs:element name="findFilmByIdResponse" type="tns:findFilmByIdResponse"/>
+
+<xs:element name="findFilmByLength" type="tns:findFilmByLength"/>
+
+<xs:element name="findFilmByLengthResponse" type="tns:findFilmByLengthResponse"/>
+
+<xs:element name="findFilmByReleaseYear" type="tns:findFilmByReleaseYear"/>
+
+<xs:element name="findFilmByReleaseYearResponse" type="tns:findFilmByReleaseYearResponse"/>
+
+<xs:element name="findFilmByReplacementCost" type="tns:findFilmByReplacementCost"/>
+
+<xs:element name="findFilmByReplacementCostResponse" type="tns:findFilmByReplacementCostResponse"/>
+
+<xs:element name="findFilmByTitle" type="tns:findFilmByTitle"/>
+
+<xs:element name="findFilmByTitleResponse" type="tns:findFilmByTitleResponse"/>
+
+<xs:element name="findFilmCategories" type="tns:findFilmCategories"/>
+
+<xs:element name="findFilmCategoriesResponse" type="tns:findFilmCategoriesResponse"/>
+
+<xs:element name="findFilmCountInStock" type="tns:findFilmCountInStock"/>
+
+<xs:element name="findFilmCountInStockResponse" type="tns:findFilmCountInStockResponse"/>
+
+<xs:element name="findFilmCustomers" type="tns:findFilmCustomers"/>
+
+<xs:element name="findFilmCustomersResponse" type="tns:findFilmCustomersResponse"/>
+
+<xs:element name="findFilmLanguage" type="tns:findFilmLanguage"/>
+
+<xs:element name="findFilmLanguageResponse" type="tns:findFilmLanguageResponse"/>
+
+<xs:element name="findFilmOriginalLanguage" type="tns:findFilmOriginalLanguage"/>
+
+<xs:element name="findFilmOriginalLanguageResponse" type="tns:findFilmOriginalLanguageResponse"/>
+
+<xs:element name="findFilmStores" type="tns:findFilmStores"/>
+
+<xs:element name="findFilmStoresResponse" type="tns:findFilmStoresResponse"/>
+
+<xs:element name="findNumberOfActors" type="tns:findNumberOfActors"/>
+
+<xs:element name="findNumberOfActorsResponse" type="tns:findNumberOfActorsResponse"/>
+
+<xs:element name="findWhereFilmAvailable" type="tns:findWhereFilmAvailable"/>
+
+<xs:element name="findWhereFilmAvailableResponse" type="tns:findWhereFilmAvailableResponse"/>
+
+<xs:element name="staffDto" type="tns:staffDto"/>
+
+<xs:element name="storeDto" type="tns:storeDto"/>
+
+<xs:element name="storeInventoryDto" type="tns:storeInventoryDto"/>
+
+<xs:complexType name="findFilmByReplacementCost">
+<xs:sequence>
+<xs:element name="replacementCost" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmByReplacementCostResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="filmDto">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="rentalDuration" type="xs:short"/>
+<xs:element name="rentalRate" type="xs:decimal" minOccurs="0"/>
+<xs:element name="length" type="xs:short" minOccurs="0"/>
+<xs:element name="replacementCost" type="xs:decimal" minOccurs="0"/>
+<xs:element name="rating" type="xs:string" minOccurs="0"/>
+<xs:element name="specialFeatures" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="language" type="xs:string" minOccurs="0"/>
+<xs:element name="originalLanguage" type="xs:string" minOccurs="0"/>
+<xs:element name="actorsNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmAvailableInWhichStore">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmAvailableInWhichStoreResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:storeDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="storeDto">
+<xs:sequence>
+<xs:element name="storeId" type="xs:short" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="address" type="tns:addressDto"/>
+<xs:element name="managerStaff" type="tns:staffDto"/>
+<xs:element name="numberOfFilms" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addressDto">
+<xs:sequence>
+<xs:element name="addressId" type="xs:short" minOccurs="0"/>
+<xs:element name="address" type="xs:string" minOccurs="0"/>
+<xs:element name="address2" type="xs:string" minOccurs="0"/>
+<xs:element name="district" type="xs:string" minOccurs="0"/>
+<xs:element name="postalCode" type="xs:string" minOccurs="0"/>
+<xs:element name="location" type="xs:base64Binary" minOccurs="0"/>
+<xs:element name="phone" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="staffDto">
+<xs:sequence>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="active" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findWhereFilmAvailable">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findWhereFilmAvailableResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:storeInventoryDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="storeInventoryDto">
+<xs:sequence>
+<xs:element name="storeId" type="xs:short" minOccurs="0"/>
+<xs:element name="inventoryId" type="xs:int" minOccurs="0"/>
+<xs:element name="addressDto" type="tns:addressDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmCustomers">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmCustomersResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:customerDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="customerDto">
+<xs:sequence>
+<xs:element name="customerId" type="xs:short" minOccurs="0"/>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="active" type="xs:boolean"/>
+<xs:element name="createDate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmByTitle">
+<xs:sequence>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmByTitleResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addActorToFilm">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="actorId" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addActorToFilmResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllFilms">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllFilmsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmCategories">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmCategoriesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCategoryToFilm">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="categoryId" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addCategoryToFilmResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmStores">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmStoresResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:storeDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findNumberOfActors">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findNumberOfActorsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDtoWithCountForStore" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="filmDtoWithCountForStore">
+<xs:complexContent>
+<xs:extension base="tns:filmDto">
+<xs:sequence>
+<xs:element name="countInStore" type="xs:long"/>
+<xs:element name="actors" minOccurs="0">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="actor" type="tns:actorDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="actorDto">
+<xs:sequence>
+<xs:element name="actorId" type="xs:short" minOccurs="0"/>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmByReleaseYear">
+<xs:sequence>
+<xs:element name="id" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmByReleaseYearResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createFilm">
+<xs:sequence>
+<xs:element name="film" type="tns:filmDtoCreate" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="filmDtoCreate">
+<xs:sequence>
+<xs:element name="title" type="xs:string"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="rentalDuration" type="xs:short"/>
+<xs:element name="rentalRate" type="xs:decimal"/>
+<xs:element name="length" type="xs:short" minOccurs="0"/>
+<xs:element name="replacementCost" type="xs:decimal"/>
+<xs:element name="specialFeatures" type="xs:string" minOccurs="0"/>
+<xs:element name="languageId" type="xs:short"/>
+<xs:element name="originalLanguageId" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createFilmResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByRating">
+<xs:sequence>
+<xs:element name="rating" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByRatingResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteFilmById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteFilmByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmActors">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmActorsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actorDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByRentalDuration">
+<xs:sequence>
+<xs:element name="rentalDuration" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findByRentalDurationResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmByLength">
+<xs:sequence>
+<xs:element name="length" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmByLengthResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmCountInStock">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmCountInStockResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmLanguage">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmLanguageResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmOriginalLanguage">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmOriginalLanguageResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCountFilmRentals">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findCountFilmRentalsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

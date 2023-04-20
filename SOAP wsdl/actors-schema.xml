@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by XML-WS Runtime (https://github.com/eclipse-ee4j/metro-jax-ws). Runtime's version is XML-WS Runtime 4.0.1 git-revision#298606e. --><xs:schema xmlns:tns="http://soap.endpoints.business.sakila.iti.gov/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap.endpoints.business.sakila.iti.gov/">
+
+<xs:element name="actorDto" type="tns:actorDto"/>
+
+<xs:element name="actorDtoCreate" type="tns:actorDtoCreate"/>
+
+<xs:element name="addFilmToActor" type="tns:addFilmToActor"/>
+
+<xs:element name="addFilmToActorResponse" type="tns:addFilmToActorResponse"/>
+
+<xs:element name="createActor" type="tns:createActor"/>
+
+<xs:element name="createActorResponse" type="tns:createActorResponse"/>
+
+<xs:element name="deleteActorById" type="tns:deleteActorById"/>
+
+<xs:element name="deleteActorByIdResponse" type="tns:deleteActorByIdResponse"/>
+
+<xs:element name="filmDto" type="tns:filmDto"/>
+
+<xs:element name="findActorByFirstName" type="tns:findActorByFirstName"/>
+
+<xs:element name="findActorByFirstNameResponse" type="tns:findActorByFirstNameResponse"/>
+
+<xs:element name="findActorById" type="tns:findActorById"/>
+
+<xs:element name="findActorByIdResponse" type="tns:findActorByIdResponse"/>
+
+<xs:element name="findActorFilms" type="tns:findActorFilms"/>
+
+<xs:element name="findActorFilmsResponse" type="tns:findActorFilmsResponse"/>
+
+<xs:element name="findAllActors" type="tns:findAllActors"/>
+
+<xs:element name="findAllActorsResponse" type="tns:findAllActorsResponse"/>
+
+<xs:complexType name="deleteActorById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteActorByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addFilmToActor">
+<xs:sequence>
+<xs:element name="actorId" type="xs:short" minOccurs="0"/>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addFilmToActorResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createActor">
+<xs:sequence>
+<xs:element name="actor" type="tns:actorDtoCreate" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actorDtoCreate">
+<xs:sequence>
+<xs:element name="firstName" type="xs:string"/>
+<xs:element name="lastName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createActorResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actorDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actorDto">
+<xs:sequence>
+<xs:element name="actorId" type="xs:short" minOccurs="0"/>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllActors">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllActorsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actorDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findActorFilms">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findActorFilmsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:filmDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="filmDto">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="rentalDuration" type="xs:short"/>
+<xs:element name="rentalRate" type="xs:decimal" minOccurs="0"/>
+<xs:element name="length" type="xs:short" minOccurs="0"/>
+<xs:element name="replacementCost" type="xs:decimal" minOccurs="0"/>
+<xs:element name="rating" type="xs:string" minOccurs="0"/>
+<xs:element name="specialFeatures" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="language" type="xs:string" minOccurs="0"/>
+<xs:element name="originalLanguage" type="xs:string" minOccurs="0"/>
+<xs:element name="actorsNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findActorById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findActorByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actorDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findActorByFirstName">
+<xs:sequence>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findActorByFirstNameResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:actorDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

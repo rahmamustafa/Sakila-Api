@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by XML-WS Runtime (https://github.com/eclipse-ee4j/metro-jax-ws). Runtime's version is XML-WS Runtime 4.0.1 git-revision#298606e. --><xs:schema xmlns:tns="http://soap.endpoints.business.sakila.iti.gov/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://soap.endpoints.business.sakila.iti.gov/">
+
+<xs:element name="addressDto" type="tns:addressDto"/>
+
+<xs:element name="createInventory" type="tns:createInventory"/>
+
+<xs:element name="createInventoryResponse" type="tns:createInventoryResponse"/>
+
+<xs:element name="deleteInventoryById" type="tns:deleteInventoryById"/>
+
+<xs:element name="deleteInventoryByIdResponse" type="tns:deleteInventoryByIdResponse"/>
+
+<xs:element name="filmDto" type="tns:filmDto"/>
+
+<xs:element name="findAllAvailableFilmInventory" type="tns:findAllAvailableFilmInventory"/>
+
+<xs:element name="findAllAvailableFilmInventoryResponse" type="tns:findAllAvailableFilmInventoryResponse"/>
+
+<xs:element name="findAllInventories" type="tns:findAllInventories"/>
+
+<xs:element name="findAllInventoriesResponse" type="tns:findAllInventoriesResponse"/>
+
+<xs:element name="findAllRentedInventory" type="tns:findAllRentedInventory"/>
+
+<xs:element name="findAllRentedInventoryResponse" type="tns:findAllRentedInventoryResponse"/>
+
+<xs:element name="findFilmRentedInventory" type="tns:findFilmRentedInventory"/>
+
+<xs:element name="findFilmRentedInventoryResponse" type="tns:findFilmRentedInventoryResponse"/>
+
+<xs:element name="findInventoryById" type="tns:findInventoryById"/>
+
+<xs:element name="findInventoryByIdResponse" type="tns:findInventoryByIdResponse"/>
+
+<xs:element name="inventoryDto" type="tns:inventoryDto"/>
+
+<xs:element name="staffDto" type="tns:staffDto"/>
+
+<xs:element name="storeDto" type="tns:storeDto"/>
+
+<xs:element name="storeFilmInventoryDto" type="tns:storeFilmInventoryDto"/>
+
+<xs:element name="storeInventoryDto" type="tns:storeInventoryDto"/>
+
+<xs:complexType name="findInventoryById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findInventoryByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:inventoryDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inventoryDto">
+<xs:sequence>
+<xs:element name="inventoryId" type="xs:short" minOccurs="0"/>
+<xs:element name="film" type="tns:filmDto" minOccurs="0"/>
+<xs:element name="store" type="tns:storeDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="filmDto">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="rentalDuration" type="xs:short"/>
+<xs:element name="rentalRate" type="xs:decimal" minOccurs="0"/>
+<xs:element name="length" type="xs:short" minOccurs="0"/>
+<xs:element name="replacementCost" type="xs:decimal" minOccurs="0"/>
+<xs:element name="rating" type="xs:string" minOccurs="0"/>
+<xs:element name="specialFeatures" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="language" type="xs:string" minOccurs="0"/>
+<xs:element name="originalLanguage" type="xs:string" minOccurs="0"/>
+<xs:element name="actorsNumber" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="storeDto">
+<xs:sequence>
+<xs:element name="storeId" type="xs:short" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="address" type="tns:addressDto"/>
+<xs:element name="managerStaff" type="tns:staffDto"/>
+<xs:element name="numberOfFilms" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addressDto">
+<xs:sequence>
+<xs:element name="addressId" type="xs:short" minOccurs="0"/>
+<xs:element name="address" type="xs:string" minOccurs="0"/>
+<xs:element name="address2" type="xs:string" minOccurs="0"/>
+<xs:element name="district" type="xs:string" minOccurs="0"/>
+<xs:element name="postalCode" type="xs:string" minOccurs="0"/>
+<xs:element name="location" type="xs:base64Binary" minOccurs="0"/>
+<xs:element name="phone" type="xs:string" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="staffDto">
+<xs:sequence>
+<xs:element name="firstName" type="xs:string" minOccurs="0"/>
+<xs:element name="lastName" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="active" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllInventories">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllInventoriesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:inventoryDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllRentedInventory">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllRentedInventoryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:inventoryDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmRentedInventory">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findFilmRentedInventoryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:storeInventoryDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="storeInventoryDto">
+<xs:sequence>
+<xs:element name="storeId" type="xs:short" minOccurs="0"/>
+<xs:element name="inventoryId" type="xs:int" minOccurs="0"/>
+<xs:element name="addressDto" type="tns:addressDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findAllAvailableFilmInventory">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findAllAvailableFilmInventoryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:storeFilmInventoryDto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="storeFilmInventoryDto">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="storeId" type="xs:short" minOccurs="0"/>
+<xs:element name="inventoryId" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createInventory">
+<xs:sequence>
+<xs:element name="filmId" type="xs:short" minOccurs="0"/>
+<xs:element name="storeId" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="createInventoryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:inventoryDto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteInventoryById">
+<xs:sequence>
+<xs:element name="id" type="xs:short" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteInventoryByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
