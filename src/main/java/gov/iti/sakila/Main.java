@@ -1,5 +1,7 @@
 package gov.iti.sakila;
 
+import gov.iti.sakila.presistence.entities.Customer;
+import gov.iti.sakila.presistence.repositories.CustomerRepository;
 import gov.iti.sakila.presistence.repositories.FilmRepository;
 import gov.iti.sakila.presistence.repositories.InventoryRepository;
 import gov.iti.sakila.presistence.repositories.StoreRepository;
@@ -7,10 +9,11 @@ import gov.iti.sakila.presistence.repositories.StoreRepository;
 public class Main {
     public static void main(String[] args) {
        // FilmService filmService = new FilmService();
-        FilmRepository filmRepository = new FilmRepository();
-        StoreRepository storeRepository = new StoreRepository();
-        InventoryRepository inventoryRepository = new InventoryRepository();
-//        ActorService actorService = new ActorService();
+//        FilmRepository filmRepository = new FilmRepository();
+//        StoreRepository storeRepository = new StoreRepository();
+//        InventoryRepository inventoryRepository = new InventoryRepository();
+//        CustomerRepository customerRepository = new CustomerRepository();
+////        ActorService actorService = new ActorService();
 //        StoreService storeService = new StoreService();
        
 //        Film film = new Film("Rahma",Short.valueOf("6"),BigDecimal.valueOf(20.99),
@@ -33,6 +36,6 @@ public class Main {
 //        System.out.println(filmService.createFilm(filmDtoCreate));
 //        System.out.println(storeService.findNumberOfEachFilm((short) 1));
 //        System.out.println(storeRepository.getRentalCount());
-//        System.out.println(inventoryRepository.findFilmRentedInventory(Short.valueOf("2")).toString());
+//        System.out.println(customerRepository.findCustomerUnReturnedFilms(Short.valueOf("2")).toString());
     }
 }

@@ -8,21 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 
 /**
  *
@@ -37,7 +23,7 @@ import jakarta.persistence.TemporalType;
     @NamedQuery(name = "Customer.findByLastName", query = "SELECT c FROM Customer c WHERE c.lastName = :lastName"),
     @NamedQuery(name = "Customer.findByEmail", query = "SELECT c FROM Customer c WHERE c.email = :email"),
     @NamedQuery(name = "Customer.findByActive", query = "SELECT c FROM Customer c WHERE c.active = :active"),
-    @NamedQuery(name = "Customer.findByCreateDate", query = "SELECT c FROM Customer c WHERE c.createDate = :createDate"),
+    @NamedQuery(name = "Customer.findByCreateDate", query = "SELECT c FROM Customer c WHERE FUNC('MONTH', c.createDate) = FUNC('MONTH', :createDate) AND FUNC('YEAR', c.createDate) = FUNC('YEAR', :createDate)"),
     @NamedQuery(name = "Customer.findByLastUpdate", query = "SELECT c FROM Customer c WHERE c.lastUpdate = :lastUpdate")})
 public class Customer implements Serializable {
 
@@ -70,10 +56,10 @@ public class Customer implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerId")
     private List<Payment> paymentList;
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false , fetch = FetchType.LAZY)
     private Address addressId;
     @JoinColumn(name = "store_id", referencedColumnName = "store_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false , fetch = FetchType.LAZY)
     private Store storeId;
 
     public Customer() {

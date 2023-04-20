@@ -1,21 +1,18 @@
 package gov.iti.sakila.business.endpoints.soap;
 
-import gov.iti.sakila.business.mappers.InventoryMapper;
 import gov.iti.sakila.business.services.InventoryService;
-import gov.iti.sakila.presistence.dtos.InventoryDto;
-import gov.iti.sakila.presistence.dtos.film.StoreFilmInventoryDto;
-import gov.iti.sakila.presistence.dtos.store.StoreInventoryDto;
-import gov.iti.sakila.presistence.entities.Inventory;
+import gov.iti.sakila.business.services.servicesimpl.InventoryServiceImpl;
+import gov.iti.sakila.business.services.dtos.InventoryDto;
+import gov.iti.sakila.business.services.dtos.film.StoreFilmInventoryDto;
+import gov.iti.sakila.business.services.dtos.store.StoreInventoryDto;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
-import jakarta.ws.rs.NotFoundException;
-import lombok.NonNull;
 
 import java.util.List;
 
 @WebService
 public class InventoryEndPoint {
-    InventoryService inventoryService = new InventoryService();
+    InventoryService inventoryService = new InventoryServiceImpl();
 
     public InventoryDto createInventory(@WebParam(name = "filmId") Short filmId,@WebParam(name = "storeId")  Short storeId){
         return inventoryService.createInventory(filmId,storeId);

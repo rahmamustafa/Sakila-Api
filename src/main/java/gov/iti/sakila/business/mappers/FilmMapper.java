@@ -1,10 +1,8 @@
 package gov.iti.sakila.business.mappers;
 
-import gov.iti.sakila.presistence.dtos.actor.ActorDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDtoCreate;
+import gov.iti.sakila.business.services.dtos.film.FilmDto;
+import gov.iti.sakila.business.services.dtos.film.FilmDtoCreate;
 import gov.iti.sakila.presistence.entities.*;
-import lombok.Data;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

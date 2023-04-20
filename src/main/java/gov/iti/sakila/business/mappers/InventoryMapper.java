@@ -1,10 +1,9 @@
 package gov.iti.sakila.business.mappers;
 
-import gov.iti.sakila.presistence.dtos.InventoryDto;
-import gov.iti.sakila.presistence.dtos.RentalDto;
-import gov.iti.sakila.presistence.dtos.customer.CustomerDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDto;
-import gov.iti.sakila.presistence.dtos.store.StoreDto;
+import gov.iti.sakila.business.services.dtos.InventoryDto;
+import gov.iti.sakila.business.services.dtos.RentalDto;
+import gov.iti.sakila.business.services.dtos.film.FilmDto;
+import gov.iti.sakila.business.services.dtos.store.StoreDto;
 import gov.iti.sakila.presistence.entities.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

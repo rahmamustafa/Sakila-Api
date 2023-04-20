@@ -1,29 +1,22 @@
 package gov.iti.sakila.business.endpoints.soap;
 
-import gov.iti.sakila.business.mappers.*;
 import gov.iti.sakila.business.services.StoreService;
-import gov.iti.sakila.presistence.dtos.AddressDto;
-import gov.iti.sakila.presistence.dtos.RentalDto;
-import gov.iti.sakila.presistence.dtos.StaffDto;
-import gov.iti.sakila.presistence.dtos.film.FilmDto;
-import gov.iti.sakila.presistence.dtos.store.StoreDto;
-import gov.iti.sakila.presistence.dtos.store.StoreDtoCreate;
-import gov.iti.sakila.presistence.entities.Film;
-import gov.iti.sakila.presistence.entities.Inventory;
-import gov.iti.sakila.presistence.entities.Rental;
-import gov.iti.sakila.presistence.entities.Store;
+import gov.iti.sakila.business.services.servicesimpl.StoreServiceImpl;
+import gov.iti.sakila.business.services.dtos.AddressDto;
+import gov.iti.sakila.business.services.dtos.RentalDto;
+import gov.iti.sakila.business.services.dtos.StaffDto;
+import gov.iti.sakila.business.services.dtos.film.FilmDto;
+import gov.iti.sakila.business.services.dtos.store.StoreDto;
+import gov.iti.sakila.business.services.dtos.store.StoreDtoCreate;
 import jakarta.jws.WebParam;
 import jakarta.jws.WebService;
-import lombok.NonNull;
 
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 @WebService
 public class StoreEndPoint {
 
-    private final StoreService storeService = new StoreService();
+    private final StoreService storeService = new StoreServiceImpl();
     public StoreDto createStore(@WebParam(name = "store") StoreDtoCreate storeDtoCreate){
         return storeService.createStore(storeDtoCreate);
     }

@@ -8,22 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 
 /**
  *
@@ -70,13 +55,13 @@ public class Address implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
     @JoinColumn(name = "city_id", referencedColumnName = "city_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private City cityId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId",fetch = FetchType.LAZY)
     private List<Staff> staffList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId",fetch = FetchType.LAZY)
     private List<Store> storeList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "addressId",fetch = FetchType.LAZY)
     private List<Customer> customerList;
 
     public Address() {
