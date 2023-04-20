@@ -38,6 +38,7 @@
 
 ## ```SOAP```
 > This SOAP API only accepts HTTP POST requests but it also supports several common operations for all item types, including Add, Delete, Load, and Update. You’ll see these operations instead of the HTTP verbs GET, PUT, PATCH, and DELETE.
+
 You can use postman to use this API or bulid your client application and then import wsdl.
 
 [SOAP WSDL](https://github.com/rahmamustafa/Sakila-Api/tree/main/SOAP%20wsdl)
@@ -52,12 +53,13 @@ All subsequent requests the user-agent may make are discovered inside the respon
   * Apache Tomcat: v10.1.7 
   * Apache Maven: v3.3
   * MySQL: v8.0.32 Make sure you choose to install the Sakila Sample database while installing.
-  * WS-API: v4.0
-  * JAX-RS API: v3.1.1
-  * Jersy: v3.1
+  * JAX-WS: v4.0
+  * JAX-RS: v3.1.1
+  * Jersey: v3.1
   * Mapstruct: v1.5.3
   * Lombok: v1.18
-  * Jakarta persistance: v6.1
+  * Jakarta persistence: v2.2.3
+  * Jakarta Validation: v3.0.0
   * Hibernate core: v6.1
   * Hibernate Validator: v7.0
 
