@@ -40,7 +40,7 @@
 > This SOAP API only accepts HTTP POST requests but it also supports several common operations for all item types, including Add, Delete, Load, and Update. You’ll see these operations instead of the HTTP verbs GET, PUT, PATCH, and DELETE.
 You can use postman to use this API or bulid your client application and then import wsdl.
 
-[SOAP WSDL] (https://github.com/rahmamustafa/Sakila-Api/blob/main/SOAP%20wsdl)
+[SOAP WSDL](https://github.com/rahmamustafa/Sakila-Api/tree/main/SOAP%20wsdl)
 
 ## ```REST```
 > REST requests are HTTP requests made to the the endpoint URL of Sakila REST API, which has the following format: http://{your-server}:{port-number}/sakila/api/{resource}s/. This API uses the HTTP methods GET, POST, PUT, and DELETE.
