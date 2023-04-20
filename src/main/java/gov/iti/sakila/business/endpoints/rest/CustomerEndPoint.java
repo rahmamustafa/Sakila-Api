@@ -9,6 +9,11 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.*;
 
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -122,14 +127,26 @@ public class CustomerEndPoint {
     @GET
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public Response findCustomerByCreateDate(Date createDate) {
+    public Response findCustomerByCreateDate(String createDate) {
         try {
-            List<CustomerDto> customers = customerServiceImpl.findCustomerByCreateDate(createDate);
+            //2006-02-15T02:57:20Z[UTC]
+            //"2010-07-28T22:25:51Z"
+            DateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
+            if (createDate.contains("Z"))
+                df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            else if (createDate.contains(":"))
+                df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:s");
+
+            Date result1 = df1.parse(createDate);
+            System.out.println(result1);
+            List<CustomerDto> customers = customerServiceImpl.findCustomerByCreateDate(result1);
             return Response.ok().status(Response.Status.OK).entity(customers).build();
         } catch (NotFoundException e) {
             return Response.ok().status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
         } catch (IllegalArgumentException e) {
             return Response.ok().status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
     }
 

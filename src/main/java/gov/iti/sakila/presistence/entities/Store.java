@@ -7,22 +7,8 @@ package gov.iti.sakila.presistence.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
+import jakarta.persistence.*;
 
 /**
  *
@@ -46,17 +32,17 @@ public class Store implements Serializable {
     @Column(name = "last_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "storeId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "storeId",fetch = FetchType.LAZY)
     private List<Staff> staffList;
     @JoinColumn(name = "address_id", referencedColumnName = "address_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
     private Address addressId;
     @JoinColumn(name = "manager_staff_id", referencedColumnName = "staff_id")
-    @OneToOne(optional = false)
+    @OneToOne(optional = false,fetch = FetchType.LAZY)
     private Staff managerStaffId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "storeId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "storeId" , fetch = FetchType.LAZY)
     private List<Inventory> inventoryList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "storeId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "storeId" , fetch = FetchType.LAZY)
     private List<Customer> customerList;
 
     public Store() {

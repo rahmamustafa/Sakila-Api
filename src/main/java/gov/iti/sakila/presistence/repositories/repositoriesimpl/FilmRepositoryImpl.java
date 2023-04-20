@@ -92,7 +92,7 @@ public class FilmRepositoryImpl extends GenericRepositoryImpl<Film, Short> imple
                 "WHERE f.filmId = :filmId " +
                 "GROUP BY f";*/
 
-        String q = "SELECT NEW gov.iti.sakila.presistence.dtos.film.FilmDtoWithCountForStore(f, count(a)) " +
+        String q = "SELECT NEW gov.iti.sakila.business.services.dtos.film.FilmDtoWithCountForStore(f, count(a)) " +
                 "FROM Film f " +
                 "JOIN f.filmActorList a " +
                 "WHERE f.filmId = :filmId " +
@@ -151,7 +151,7 @@ public class FilmRepositoryImpl extends GenericRepositoryImpl<Film, Short> imple
 
     @Override
     public List<StoreInventoryDto> findWhereFilmAvailable(Short filmId) {
-        String jpql = "select new gov.iti.sakila.presistence.dtos.store." +
+        String jpql = "select new gov.iti.sakila.business.services.dtos.store." +
                 "StoreInventoryDto(i.storeId.id, i.inventoryId,i.storeId.addressId) " +
                 "from Inventory i " +
                 "where i.inventoryId not in " +

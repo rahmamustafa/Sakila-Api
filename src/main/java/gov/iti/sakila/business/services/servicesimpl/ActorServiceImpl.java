@@ -2,6 +2,7 @@ package gov.iti.sakila.business.services.servicesimpl;
 
 import gov.iti.sakila.business.mappers.ActorMapper;
 import gov.iti.sakila.business.mappers.FilmMapper;
+import gov.iti.sakila.business.services.ActorService;
 import gov.iti.sakila.business.util.ValidatorHandler;
 import gov.iti.sakila.business.services.dtos.actor.ActorDto;
 import gov.iti.sakila.business.services.dtos.actor.ActorDtoCreate;
@@ -19,7 +20,7 @@ import java.sql.Date;
 import java.time.Instant;
 import java.util.List;
 
-public class ActorServiceImpl implements gov.iti.sakila.business.services.ActorService {
+public class ActorServiceImpl implements ActorService {
     private final ActorRepository actorRepository = new ActorRepositoryImpl();
     private final ValidatorHandler validatorHandler = ValidatorHandler.getInstance();
     private final String ERROR_MESSAGE = "Please Enter Valid Data";

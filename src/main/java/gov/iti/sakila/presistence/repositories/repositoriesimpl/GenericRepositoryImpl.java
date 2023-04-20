@@ -10,7 +10,7 @@ import jakarta.ws.rs.NotFoundException;
 
 import java.util.List;
 
-public class GenericRepositoryImpl<T, Id> implements GenericRepository<T,Id> {
+public abstract class GenericRepositoryImpl<T, Id> implements GenericRepository<T,Id> {
     protected Class<T> entityClass;
     protected EntityManager entityManager;
 

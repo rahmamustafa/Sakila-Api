@@ -16,7 +16,7 @@ public class InventoryRepositoryImpl extends GenericRepositoryImpl<Inventory, Sh
 
     @Override
     public List<StoreFilmInventoryDto> findAllAvailableFilmInventory(){
-        String jpql ="select new gov.iti.sakila.presistence.dtos.film.StoreFilmInventoryDto(i.filmId.id, i.storeId.id, i.inventoryId) " +
+        String jpql ="select new gov.iti.sakila.business.services.dtos.film.StoreFilmInventoryDto(i.filmId.id, i.storeId.id, i.inventoryId) " +
                 "from Inventory i " +
                 "where i.inventoryId not in " +
                 "(select r.inventoryId.id " +
@@ -27,7 +27,7 @@ public class InventoryRepositoryImpl extends GenericRepositoryImpl<Inventory, Sh
     }
     @Override
     public List<StoreInventoryDto> findFilmRentedInventory(Short filmId){
-        String jpql ="select new gov.iti.sakila.presistence.dtos.store." +
+        String jpql ="select new gov.iti.sakila.business.services.dtos.store." +
                 "StoreInventoryDto(i.storeId.id , i.inventoryId,i.storeId.addressId) " +
                 "from Rental r " +
                 "join Inventory i " +
