@@ -63,9 +63,32 @@ All subsequent requests the user-agent may make are discovered inside the respon
   * Hibernate core: v6.1
   * Hibernate Validator: v7.0
 
+## Run Locally
 
-  
-  To run project you need to run command
+  Download the Sakila database  
+  1. You can download the Sakila sample database from 
+[Sakila Database](https://downloads.mysql.com/docs/sakila-db.zip)
+
+> The Zip file contains three files: sakila-schema.sql, sakila-data.sql and sakila.mwb.
+
+ * ```sakila-schema.sql:``` The file contains all CREATE statements to create the structure of the Sakila database, including tables, views, stored procedures, functions and triggers.
+ * ```sakila-data.sql:``` The file contains all INSERT statements to insert data.
+ * ```sakila.mwb:``` The file is a MySQL Workbench data model. You can open it in MySQL Workbench to check the database structure.
+ 2. Unzip the downloaded zip file to a temporary location for example C:\temp\. It creates a folder named sakila-db that contains sakila-schema.sql and sakila-data.sql files.
+ 3. Execute sakila-schema.sql to create the database structure and execute sakila-data.sql to insert the data into the database, by using the following command:
+   
+   ```bash
+   mysql> SOURCE C:/temp/sakila-db/sakila-schema.sql;
+   mysql> SOURCE C:/temp/sakila-db/sakila-data.sql;
+```
+   
+  4. Clone the repositary
+   ```bash 
+     git clone https://github.com/rahmamustafa/Sakila-Api.git
+   ```
+  5. Change database user and password to yours in persistence.xml file
+   
+  6. Finally, to run the project run command
   ```bash
     mvn clean install tomcat7:deploy
 ```
